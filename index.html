@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Court of MÓRA — Courtship for the Sincere</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════
+   THE GARDEN — MORA COLOR SYSTEM
+   No pure black. No white. No grey.
+   "From the garden (Kert), through
+    patient tending, comes the harvest
+    (Bor), laid upon the table (Csont),
+    blessed by the light (Arany)."
+   ═══════════════════════════════════ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    /* Erdő — The Garden */
+    --garden-abyss: #040C06;
+    --garden-deep: #081410;
+    --garden-dark: #0E2218;
+    --garden-mid: #1A3A25;
+    --garden-true: #2C5530;
+    --garden-light: #3D7A4A;
+    --garden-bright: #5A9B6E;
+    --garden-pale: #7AB88A;
+
+    /* Bor — The Rose */
+    --rose-shadow: #3A1218;
+    --rose-deep: #5A2028;
+    --rose-true: #722F37;
+    --rose-mid: #8B3A42;
+    --rose-light: #A04550;
+    --rose-blush: #C06070;
+
+    /* Arany — The Light */
+    --gold-true: #C9A227;
+    --gold-warm: #D4B040;
+    --gold-dim: rgba(201, 162, 39, 0.15);
+
+    /* Tejszín — The Canvas */
+    --cream: #F5F0E6;
+    --cream-muted: #C8BFA8;
+    --cream-dim: #8A7E6A;
+    --cream-faint: #5A5240;
+
+    /* Tégla — Earth warmth */
+    --terra: #C67D5E;
+
+    --font-display: 'Cormorant Garamond', 'Georgia', serif;
+    --font-body: 'EB Garamond', 'Georgia', serif;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    background: var(--garden-abyss);
+    color: var(--cream);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════
+   PAINTED ATMOSPHERE
+   Multiple light sources like a
+   garden at golden hour through mist
+   ═══════════════════════════════════ */
+
+.atmosphere {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        /* Golden hour warmth — center */
+        radial-gradient(ellipse 40% 35% at 50% 35%, rgba(201, 162, 39, 0.045) 0%, transparent 70%),
+        /* Garden depth — left grove */
+        radial-gradient(ellipse 55% 50% at 15% 55%, rgba(44, 85, 48, 0.14) 0%, transparent 55%),
+        /* Garden depth — right grove */
+        radial-gradient(ellipse 50% 55% at 85% 45%, rgba(26, 58, 37, 0.16) 0%, transparent 55%),
+        /* Rose warmth — lower left */
+        radial-gradient(ellipse 25% 22% at 8% 88%, rgba(114, 47, 55, 0.07) 0%, transparent 50%),
+        /* Rose warmth — upper right */
+        radial-gradient(ellipse 22% 25% at 92% 12%, rgba(114, 47, 55, 0.05) 0%, transparent 50%),
+        /* Terracotta earth — bottom */
+        radial-gradient(ellipse 60% 20% at 50% 95%, rgba(198, 125, 94, 0.03) 0%, transparent 60%),
+        /* Vignette — painting edge */
+        radial-gradient(ellipse 65% 60% at 50% 48%, transparent 45%, rgba(4, 12, 6, 0.5) 100%),
+        /* Base garden gradient */
+        linear-gradient(170deg, var(--garden-deep) 0%, var(--garden-dark) 40%, var(--garden-abyss) 100%);
+}
+
+/* Drifting mist layer */
+.mist {
+    position: fixed;
+    inset: -10%;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 35% 30% at 35% 45%, rgba(245, 240, 230, 0.025) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 25% at 65% 55%, rgba(245, 240, 230, 0.018) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 20% at 50% 80%, rgba(44, 85, 48, 0.04) 0%, transparent 60%);
+    animation: mistDrift 40s ease-in-out infinite alternate;
+}
+
+@keyframes mistDrift {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(25px, -15px) scale(1.02); }
+}
+
+/* Particle system — pollen and light motes */
+.particles { position: fixed; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--cream);
+    opacity: 0;
+    animation: particleFloat var(--duration) var(--delay) ease-in-out infinite;
+    width: var(--size);
+    height: var(--size);
+}
+
+@keyframes particleFloat {
+    0% { transform: translate(0, 0) scale(1); opacity: 0; }
+    8% { opacity: var(--peak); }
+    85% { opacity: var(--peak); }
+    100% { transform: translate(var(--dx), var(--dy)) scale(0.3); opacity: 0; }
+}
+
+/* Canvas texture */
+.canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+    pointer-events: none;
+    opacity: 0.012;
+    mix-blend-mode: overlay;
+}
+
+/* ═══════════════════════════════════
+   BOTANICAL FRAME
+   Roses, leaves, vines — the garden
+   that frames the courtship
+   ═══════════════════════════════════ */
+
+.botanicals {
+    position: fixed;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.botanical {
+    position: absolute;
+    transition: opacity 2s ease;
+}
+
+.botanical-bg { filter: blur(2.5px); }
+.botanical-mid { filter: blur(0.8px); }
+.botanical-fg { filter: blur(0); }
+
+/* Gentle sway animation for botanicals */
+@keyframes sway {
+    0%, 100% { transform: rotate(var(--base-rot, 0deg)) translate(0, 0); }
+    50% { transform: rotate(calc(var(--base-rot, 0deg) + 1deg)) translate(1px, -2px); }
+}
+
+.botanical-sway { animation: sway var(--sway-dur, 12s) ease-in-out infinite; }
+
+/* ═══════════════════════════════════
+   SCREEN SYSTEM
+   ═══════════════════════════════════ */
+
+.screen {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.2s ease, visibility 0s 1.2s;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1.4s ease, visibility 0s 0s;
+}
+
+.screen.exiting {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.1s ease, visibility 0s 1.1s;
+}
+
+.screen-content {
+    max-width: 560px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+/* ═══════════════════════════════════
+   HUNGARIAN EMBROIDERY ORNAMENT
+   Symmetrical floral divider
+   inspired by Kalocsai motifs
+   ═══════════════════════════════════ */
+
+.embroidery-ornament {
+    display: block;
+    margin: 2rem auto;
+    width: clamp(200px, 50vw, 320px);
+    height: auto;
+    opacity: 0.55;
+}
+
+/* ═══════════════════════════════════
+   THE GATE
+   ═══════════════════════════════════ */
+
+.court-label {
+    font-family: var(--font-display);
+    font-size: clamp(0.6rem, 1vw, 0.75rem);
+    font-weight: 400;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--cream-muted);
+    margin-bottom: 0.6rem;
+}
+
+.brand-name {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-weight: 300;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-right: -0.5em;
+    text-shadow: 0 0 60px rgba(201, 162, 39, 0.08);
+}
+
+.tagline {
+    font-family: var(--font-body);
+    font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--cream-dim);
+    letter-spacing: 0.06em;
+    margin-top: 0.3rem;
+}
+
+/* ═══════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════ */
+
+.btn {
+    display: inline-block;
+    margin-top: 3rem;
+    font-family: var(--font-display);
+    font-size: clamp(0.78rem, 1.1vw, 0.9rem);
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: lowercase;
+    color: var(--cream-dim);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.8rem 0;
+    position: relative;
+    transition: color 0.6s ease;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0.15rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-true), transparent);
+    opacity: 0.5;
+    transition: width 0.6s ease;
+}
+
+.btn:hover { color: var(--cream); }
+.btn:hover::after { width: 100%; }
+.btn:focus-visible { outline: 1px solid var(--gold-dim); outline-offset: 10px; }
+
+.btn-declare {
+    font-variant: small-caps;
+    letter-spacing: 0.35em;
+    font-size: clamp(0.82rem, 1.2vw, 0.95rem);
+    color: var(--cream-muted);
+}
+
+/* ═══════════════════════════════════
+   DECLARATION
+   ═══════════════════════════════════ */
+
+.declaration-preface {
+    font-family: var(--font-display);
+    font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+    font-weight: 300;
+    color: var(--cream-dim);
+    letter-spacing: 0.04em;
+}
+
+.declaration-text {
+    font-family: var(--font-body);
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 2.3;
+    color: var(--cream);
+}
+
+/* ═══════════════════════════════════
+   QUESTIONS
+   ═══════════════════════════════════ */
+
+.scenario {
+    font-family: var(--font-body);
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 2;
+    color: var(--cream);
+    letter-spacing: 0.015em;
+}
+
+.scenario em { font-style: normal; font-weight: 500; }
+
+/* ═══════════════════════════════════
+   ANSWERS
+   ═══════════════════════════════════ */
+
+.answers {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.answer {
+    font-family: var(--font-body);
+    font-size: clamp(0.92rem, 1.4vw, 1.06rem);
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--cream-dim);
+    padding: 1.1rem 1.5rem;
+    cursor: pointer;
+    border-left: 2px solid transparent;
+    transition: color 0.4s ease, border-color 0.5s ease, background 0.5s ease, opacity 0.7s ease;
+    position: relative;
+}
+
+.answer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(114, 47, 55, 0.06) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.answer:hover {
+    color: var(--cream);
+    border-left-color: var(--rose-true);
+}
+
+.answer:hover::before { opacity: 1; }
+
+.answer:focus-visible {
+    outline: 1px solid var(--gold-dim);
+    outline-offset: -2px;
+}
+
+.answer.selected {
+    color: var(--cream);
+    border-left-color: var(--rose-light);
+    background: rgba(114, 47, 55, 0.1);
+}
+
+.answer.dimmed { opacity: 0.12; pointer-events: none; }
+
+/* Staggered entrance */
+.answers-enter .answer {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: answerIn 1s ease forwards;
+}
+.answers-enter .answer:nth-child(1) { animation-delay: 0.5s; }
+.answers-enter .answer:nth-child(2) { animation-delay: 0.8s; }
+.answers-enter .answer:nth-child(3) { animation-delay: 1.1s; }
+
+@keyframes answerIn { to { opacity: 1; transform: translateY(0); } }
+
+/* ═══════════════════════════════════
+   VERDICT: ACCEPTED
+   ═══════════════════════════════════ */
+
+.verdict-accepted::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse 50% 40% at 50% 45%,
+        rgba(201, 162, 39, 0.04) 0%,
+        rgba(44, 85, 48, 0.02) 40%,
+        transparent 70%
+    );
+    z-index: 0;
+    animation: warmBloom 3s ease forwards;
+}
+
+@keyframes warmBloom {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.verdict-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.5vw, 1.7rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    position: relative;
+    z-index: 1;
+}
+
+.verdict-accepted .verdict-text { color: var(--cream); }
+
+.verdict-accepted.active .verdict-text {
+    opacity: 0;
+    animation: warmReveal 2s ease forwards 0.3s;
+}
+
+@keyframes warmReveal { to { opacity: 1; } }
+
+/* ═══════════════════════════════════
+   TIERS
+   ═══════════════════════════════════ */
+
+.tiers {
+    display: flex;
+    gap: 1.3rem;
+    margin-top: 3.5rem;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.verdict-accepted.active .tiers {
+    animation: tiersReveal 1.2s ease forwards 2.8s;
+}
+
+@keyframes tiersReveal { to { opacity: 1; visibility: visible; } }
+
+.tier {
+    flex: 1;
+    max-width: 168px;
+    padding: 2rem 1.1rem;
+    border: 1px solid rgba(44, 85, 48, 0.2);
+    cursor: pointer;
+    text-align: center;
+    transition: border-color 0.5s ease, background 0.5s ease, transform 0.5s ease;
+    position: relative;
+}
+
+.tier::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201, 162, 39, 0.04) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.tier:hover {
+    border-color: rgba(201, 162, 39, 0.3);
+    transform: translateY(-3px);
+}
+
+.tier:hover::before { opacity: 1; }
+
+.tier-name {
+    font-family: var(--font-display);
+    font-size: clamp(0.68rem, 1vw, 0.8rem);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-true);
+    opacity: 0.7;
+    margin-bottom: 1rem;
+}
+
+.tier-price {
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 1rem;
+}
+
+.tier-signal {
+    font-family: var(--font-body);
+    font-size: clamp(0.72rem, 1vw, 0.82rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--cream-dim);
+}
+
+/* ═══════════════════════════════════
+   VERDICT: BARRED
+   ═══════════════════════════════════ */
+
+.verdict-barred .verdict-text {
+    color: var(--cream-faint);
+    opacity: 0;
+}
+
+.verdict-barred.active .verdict-text {
+    animation: coldReveal 3s ease forwards 1s;
+}
+
+@keyframes coldReveal { to { opacity: 1; } }
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════ */
+
+@media (max-width: 640px) {
+    .screen { padding: 1.5rem; }
+    .tiers { flex-direction: column; align-items: center; }
+    .tier { max-width: 280px; width: 100%; }
+    .answer { padding: 1rem 1.2rem; }
+    .botanical { transform: scale(0.6) !important; }
+}
+
+@media (max-width: 380px) {
+    .brand-name { letter-spacing: 0.35em; margin-right: -0.35em; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     SVG DEFINITIONS
+     Reusable roses, leaves, vines,
+     embroidery ornament, filters
+     ═══════════════════════════════════ -->
+<svg width="0" height="0" style="position:absolute">
+<defs>
+    <!-- Blur filters for depth -->
+    <filter id="blur-bg"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="blur-mid"><feGaussianBlur stdDeviation="1"/></filter>
+
+    <!-- Canvas texture -->
+    <filter id="canvas-grain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+    </filter>
+
+    <!-- Full rose — viewed from above -->
+    <g id="rose-full">
+        <ellipse cx="0" cy="-7" rx="16" ry="12" fill="#5A2028" opacity="0.45" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-7" rx="16" ry="12" fill="#5A2028" opacity="0.4" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-7" rx="16" ry="12" fill="#5A2028" opacity="0.45" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-7" rx="16" ry="12" fill="#5A2028" opacity="0.4" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-7" rx="16" ry="12" fill="#5A2028" opacity="0.45" transform="rotate(288)"/>
+        <ellipse cx="0" cy="-4" rx="11" ry="8" fill="#722F37" opacity="0.65" transform="rotate(36)"/>
+        <ellipse cx="0" cy="-4" rx="11" ry="8" fill="#722F37" opacity="0.6" transform="rotate(108)"/>
+        <ellipse cx="0" cy="-4" rx="11" ry="8" fill="#722F37" opacity="0.65" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-4" rx="11" ry="8" fill="#722F37" opacity="0.6" transform="rotate(252)"/>
+        <ellipse cx="0" cy="-4" rx="11" ry="8" fill="#722F37" opacity="0.65" transform="rotate(324)"/>
+        <ellipse cx="0" cy="-2" rx="7" ry="5" fill="#8B3A42" opacity="0.8" transform="rotate(18)"/>
+        <ellipse cx="0" cy="-1" rx="6" ry="4" fill="#8B3A42" opacity="0.85" transform="rotate(-22)"/>
+        <ellipse cx="0" cy="0" rx="4" ry="3" fill="#A04550" opacity="0.9" transform="rotate(8)"/>
+        <circle cx="0" cy="0" r="2" fill="#3A1218"/>
+    </g>
+
+    <!-- Rosebud -->
+    <g id="rosebud">
+        <ellipse cx="0" cy="-3" rx="4" ry="7" fill="#2C5530" opacity="0.7" transform="rotate(-8)"/>
+        <ellipse cx="0" cy="-1" rx="3.5" ry="6" fill="#722F37" opacity="0.7" transform="rotate(5)"/>
+        <ellipse cx="1" cy="0" rx="2.5" ry="5" fill="#8B3A42" opacity="0.8" transform="rotate(-3)"/>
+    </g>
+
+    <!-- Single leaf -->
+    <g id="leaf">
+        <path d="M0,0 Q6,-15 0,-32 Q-6,-15 0,0" fill="#2C5530" opacity="0.7"/>
+        <line x1="0" y1="-1" x2="0" y2="-30" stroke="#1A3A25" stroke-width="0.4" opacity="0.4"/>
+    </g>
+
+    <!-- Leaf pair on stem -->
+    <g id="leaf-pair">
+        <line x1="0" y1="0" x2="0" y2="-40" stroke="#1A3A25" stroke-width="0.8" opacity="0.4"/>
+        <use href="#leaf" transform="translate(-2,-10) rotate(35) scale(0.5)"/>
+        <use href="#leaf" transform="translate(2,-22) rotate(-30) scale(0.6)"/>
+    </g>
+</defs>
+</svg>
+
+<!-- ═══════════════════════════════════
+     ATMOSPHERIC LAYERS
+     ═══════════════════════════════════ -->
+<div class="atmosphere"></div>
+<div class="mist"></div>
+<div class="particles" id="particles"></div>
+<div class="canvas" style="filter:url(#canvas-grain)"></div>
+
+<!-- ═══════════════════════════════════
+     BOTANICAL FRAME — THE GARDEN
+     Roses and foliage framing the view
+     ═══════════════════════════════════ -->
+<div class="botanicals">
+    <!-- Background layer — deep, blurred, dreamlike -->
+    <svg class="botanical botanical-bg" style="position:absolute;top:-5%;left:-5%;width:220px;height:220px;opacity:0.12" viewBox="-50 -50 100 100">
+        <use href="#rose-full" transform="scale(2.2)"/>
+        <use href="#leaf" transform="translate(-35,10) rotate(60) scale(1.2)"/>
+        <use href="#leaf" transform="translate(-30,25) rotate(40) scale(0.9)"/>
+    </svg>
+
+    <svg class="botanical botanical-bg" style="position:absolute;bottom:-8%;right:-3%;width:260px;height:260px;opacity:0.1" viewBox="-50 -50 100 100">
+        <use href="#rose-full" transform="scale(2.5) rotate(30)"/>
+        <use href="#leaf" transform="translate(30,15) rotate(-50) scale(1.3)"/>
+    </svg>
+
+    <!-- Mid layer — roses catching golden hour light -->
+    <svg class="botanical botanical-mid botanical-sway" style="position:absolute;top:8%;right:5%;width:100px;height:100px;opacity:0.25;--sway-dur:14s" viewBox="-30 -30 60 60">
+        <use href="#rose-full" transform="scale(1.1)"/>
+        <use href="#leaf-pair" transform="translate(14,8) rotate(-45) scale(0.6)"/>
+    </svg>
+
+    <svg class="botanical botanical-mid botanical-sway" style="position:absolute;bottom:12%;left:4%;width:80px;height:80px;opacity:0.22;--sway-dur:16s" viewBox="-30 -30 60 60">
+        <use href="#rose-full" transform="scale(0.9) rotate(20)"/>
+    </svg>
+
+    <svg class="botanical botanical-mid botanical-sway" style="position:absolute;top:35%;left:2%;width:50px;height:70px;opacity:0.2;--sway-dur:18s" viewBox="-15 -45 30 70">
+        <use href="#leaf-pair" transform="scale(1.1)"/>
+    </svg>
+
+    <svg class="botanical botanical-mid botanical-sway" style="position:absolute;bottom:30%;right:3%;width:45px;height:65px;opacity:0.18;--sway-dur:15s" viewBox="-15 -45 30 70">
+        <use href="#leaf-pair" transform="scale(1) rotate(10)"/>
+        <use href="#rosebud" transform="translate(0,-40) scale(0.7)"/>
+    </svg>
+
+    <!-- Foreground accents — small, vivid -->
+    <svg class="botanical botanical-fg botanical-sway" style="position:absolute;top:15%;left:8%;width:30px;height:30px;opacity:0.35;--sway-dur:11s" viewBox="-12 -12 24 24">
+        <use href="#rosebud" transform="scale(0.8) rotate(-15)"/>
+    </svg>
+
+    <svg class="botanical botanical-fg botanical-sway" style="position:absolute;bottom:18%;right:7%;width:35px;height:35px;opacity:0.3;--sway-dur:13s" viewBox="-12 -12 24 24">
+        <use href="#rosebud" transform="scale(0.9) rotate(10)"/>
+    </svg>
+
+    <!-- Vine tendrils — top edge -->
+    <svg class="botanical botanical-mid" style="position:absolute;top:0;left:12%;width:200px;height:80px;opacity:0.15" viewBox="0 0 200 80">
+        <path d="M0,5 Q40,2 60,15 Q80,30 100,20 Q130,8 160,18 Q180,25 200,15" stroke="#2C5530" stroke-width="1.2" fill="none"/>
+        <use href="#leaf" transform="translate(60,15) rotate(120) scale(0.35)"/>
+        <use href="#leaf" transform="translate(100,18) rotate(-110) scale(0.3)"/>
+        <use href="#leaf" transform="translate(155,16) rotate(125) scale(0.32)"/>
+    </svg>
+
+    <!-- Vine tendrils — bottom edge -->
+    <svg class="botanical botanical-mid" style="position:absolute;bottom:0;right:10%;width:180px;height:70px;opacity:0.13" viewBox="0 0 180 70">
+        <path d="M0,55 Q30,60 55,50 Q80,38 110,48 Q140,58 180,45" stroke="#2C5530" stroke-width="1" fill="none"/>
+        <use href="#leaf" transform="translate(55,48) rotate(-60) scale(0.3)"/>
+        <use href="#leaf" transform="translate(110,46) rotate(65) scale(0.28)"/>
+    </svg>
+</div>
+
+<!-- ═══════════════════════════════════
+     EMBROIDERY ORNAMENT (inline SVG)
+     Hungarian Kalocsai-inspired
+     ═══════════════════════════════════ -->
+<svg width="0" height="0" style="position:absolute">
+<defs>
+<symbol id="ornament-embroidery" viewBox="0 0 320 55">
+    <!-- Central rose -->
+    <circle cx="160" cy="27" r="9" fill="#722F37" opacity="0.6"/>
+    <circle cx="160" cy="27" r="6.5" fill="#8B3A42" opacity="0.7"/>
+    <circle cx="160" cy="27" r="4" fill="#A04550" opacity="0.8"/>
+    <circle cx="160" cy="27" r="2" fill="#5A2028"/>
+    <!-- Petal accents around center -->
+    <ellipse cx="160" cy="17" rx="3.5" ry="5" fill="#722F37" opacity="0.4"/>
+    <ellipse cx="160" cy="37" rx="3.5" ry="5" fill="#722F37" opacity="0.4"/>
+    <ellipse cx="150" cy="27" rx="5" ry="3.5" fill="#722F37" opacity="0.35"/>
+    <ellipse cx="170" cy="27" rx="5" ry="3.5" fill="#722F37" opacity="0.35"/>
+
+    <!-- Left curving stem -->
+    <path d="M148,27 Q128,14 105,22 Q82,30 60,24" stroke="#2C5530" stroke-width="1.2" fill="none" opacity="0.55"/>
+    <!-- Right curving stem -->
+    <path d="M172,27 Q192,14 215,22 Q238,30 260,24" stroke="#2C5530" stroke-width="1.2" fill="none" opacity="0.55"/>
+
+    <!-- Left leaves -->
+    <ellipse cx="118" cy="17" rx="7" ry="3" fill="#2C5530" opacity="0.45" transform="rotate(-25 118 17)"/>
+    <ellipse cx="90" cy="28" rx="6" ry="2.5" fill="#3D7A4A" opacity="0.35" transform="rotate(18 90 28)"/>
+    <ellipse cx="105" cy="26" rx="5" ry="2.2" fill="#2C5530" opacity="0.3" transform="rotate(-40 105 26)"/>
+    <!-- Right leaves -->
+    <ellipse cx="202" cy="17" rx="7" ry="3" fill="#2C5530" opacity="0.45" transform="rotate(25 202 17)"/>
+    <ellipse cx="230" cy="28" rx="6" ry="2.5" fill="#3D7A4A" opacity="0.35" transform="rotate(-18 230 28)"/>
+    <ellipse cx="215" cy="26" rx="5" ry="2.2" fill="#2C5530" opacity="0.3" transform="rotate(40 215 26)"/>
+
+    <!-- Left bud -->
+    <ellipse cx="60" cy="24" rx="3.5" ry="5" fill="#722F37" opacity="0.4"/>
+    <ellipse cx="60" cy="22" rx="2.5" ry="4" fill="#8B3A42" opacity="0.45"/>
+    <!-- Right bud -->
+    <ellipse cx="260" cy="24" rx="3.5" ry="5" fill="#722F37" opacity="0.4"/>
+    <ellipse cx="260" cy="22" rx="2.5" ry="4" fill="#8B3A42" opacity="0.45"/>
+
+    <!-- Gold stamen dots -->
+    <circle cx="60" cy="20" r="1" fill="#C9A227" opacity="0.4"/>
+    <circle cx="260" cy="20" r="1" fill="#C9A227" opacity="0.4"/>
+    <circle cx="160" cy="27" r="1" fill="#C9A227" opacity="0.35"/>
+
+    <!-- Outer stem tips — fine tendrils -->
+    <path d="M60,24 Q45,20 35,25" stroke="#2C5530" stroke-width="0.6" fill="none" opacity="0.3"/>
+    <path d="M260,24 Q275,20 285,25" stroke="#2C5530" stroke-width="0.6" fill="none" opacity="0.3"/>
+</symbol>
+</defs>
+</svg>
+
+
+<!-- ═══════════════════════════════════
+     SCREEN: THE GATE
+     ═══════════════════════════════════ -->
+<section class="screen active" id="gate" aria-label="Entrance">
+    <div class="screen-content">
+        <div class="court-label">The Court of</div>
+        <div class="brand-name">M&#211;RA</div>
+        <svg class="embroidery-ornament" aria-hidden="true"><use href="#ornament-embroidery"/></svg>
+        <div class="tagline">Courtship for the Sincere</div>
+        <button class="btn" id="btn-enter">enter</button>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     SCREEN: DECLARATION OF INTENT
+     ═══════════════════════════════════ -->
+<section class="screen" id="declaration" aria-label="Declaration">
+    <div class="screen-content">
+        <div class="declaration-preface">Before you may enter, you must declare.</div>
+        <svg class="embroidery-ornament" aria-hidden="true"><use href="#ornament-embroidery"/></svg>
+        <div class="declaration-text">
+            I abandon the mechanics of dating.<br>
+            I believe love deserves craft,<br>
+            patience, and care.
+        </div>
+        <button class="btn btn-declare" id="btn-declare">I declare</button>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     SCREEN: Q1 — THE APPROACH
+     ═══════════════════════════════════ -->
+<section class="screen" id="q1" aria-label="The Approach">
+    <div class="screen-content">
+        <div class="scenario">
+            Someone you're drawn to tells you<br>
+            they need time before they can give you<br>
+            an answer about anything.
+        </div>
+        <svg class="embroidery-ornament" aria-hidden="true"><use href="#ornament-embroidery"/></svg>
+        <div class="answers">
+            <div class="answer" tabindex="0" role="button" data-question="1" data-value="patience">
+                I'd respect their pace. Some things can't be rushed.
+            </div>
+            <div class="answer" tabindex="0" role="button" data-question="1" data-value="understanding">
+                I'd give them space, but I'd want to understand why.
+            </div>
+            <div class="answer" tabindex="0" role="button" data-question="1" data-value="impatience" data-barred="true">
+                I'd need to know where I stand. Time is the one thing I can't get back.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     SCREEN: Q2 — THE LETTER
+     ═══════════════════════════════════ -->
+<section class="screen" id="q2" aria-label="The Letter">
+    <div class="screen-content">
+        <div class="scenario">
+            Someone gives you a handwritten letter<br>
+            instead of a text message.
+        </div>
+        <svg class="embroidery-ornament" aria-hidden="true"><use href="#ornament-embroidery"/></svg>
+        <div class="answers">
+            <div class="answer" tabindex="0" role="button" data-question="2" data-value="moved">
+                I'd be moved. The effort says something words alone can't.
+            </div>
+            <div class="answer" tabindex="0" role="button" data-question="2" data-value="charmed">
+                I'd find it unusual but charming. It would depend on what they wrote.
+            </div>
+            <div class="answer" tabindex="0" role="button" data-question="2" data-value="cynical" data-barred="true">
+                I'd wonder what they were trying to prove.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     SCREEN: Q3 — THE QUESTION
+     ═══════════════════════════════════ -->
+<section class="screen" id="q3" aria-label="The Question">
+    <div class="screen-content">
+        <div class="scenario">
+            Someone asks you:<br>
+            &ldquo;Why would you court someone<br>
+            when you could just date them?&rdquo;
+        </div>
+        <svg class="embroidery-ornament" aria-hidden="true"><use href="#ornament-embroidery"/></svg>
+        <div class="answers">
+            <div class="answer" tabindex="0" role="button" data-question="3" data-value="conducted">
+                Because love should be conducted, not consumed.
+            </div>
+            <div class="answer" tabindex="0" role="button" data-question="3" data-value="resist">
+                Because the best things in life resist convenience.
+            </div>
+            <div class="answer" tabindex="0" role="button" data-question="3" data-value="deliberate">
+                Because I want someone to know I chose them deliberately, not casually.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     SCREEN: ACCEPTED
+     ═══════════════════════════════════ -->
+<section class="screen verdict-accepted" id="accepted" aria-label="Accepted">
+    <div class="screen-content">
+        <div class="verdict-text">The Court has received you.</div>
+        <svg class="embroidery-ornament" aria-hidden="true"><use href="#ornament-embroidery"/></svg>
+        <div class="tiers">
+            <div class="tier" tabindex="0" role="button" data-tier="ribbon">
+                <div class="tier-name">The Ribbon</div>
+                <div class="tier-price">&euro;50</div>
+                <div class="tier-signal">I'm curious</div>
+            </div>
+            <div class="tier" tabindex="0" role="button" data-tier="handkerchief">
+                <div class="tier-name">The Handkerchief</div>
+                <div class="tier-price">&euro;200</div>
+                <div class="tier-signal">I'm ready for love</div>
+            </div>
+            <div class="tier" tabindex="0" role="button" data-tier="lighter">
+                <div class="tier-name">The Lighter</div>
+                <div class="tier-price">&euro;1,000</div>
+                <div class="tier-signal">I'm serious</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     SCREEN: BARRED
+     ═══════════════════════════════════ -->
+<section class="screen verdict-barred" id="barred" aria-label="Barred">
+    <div class="screen-content">
+        <div class="verdict-text">The Court is not ready for you yet.</div>
+    </div>
+</section>
+
+
+<script>
+/* ═══════════════════════════════════
+   STATE
+   ═══════════════════════════════════ */
+
+const state = { current: 'gate', answers: [], barred: false, transitioning: false };
+const flow = { q1: 'q2', q2: 'q3', q3: 'accepted' };
+
+/* ═══════════════════════════════════
+   PARTICLES — pollen and light motes
+   ═══════════════════════════════════ */
+
+(function createParticles() {
+    const container = document.getElementById('particles');
+    const count = window.innerWidth < 640 ? 12 : 22;
+
+    for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = (Math.random() * 100) + '%';
+        p.style.top = (Math.random() * 100) + '%';
+        p.style.setProperty('--duration', (25 + Math.random() * 35) + 's');
+        p.style.setProperty('--delay', (Math.random() * 25) + 's');
+        p.style.setProperty('--dx', ((Math.random() - 0.5) * 120) + 'px');
+        p.style.setProperty('--dy', (-30 - Math.random() * 100) + 'px');
+        p.style.setProperty('--size', (1.5 + Math.random() * 2.5) + 'px');
+        p.style.setProperty('--peak', (0.08 + Math.random() * 0.2).toFixed(2));
+        container.appendChild(p);
+    }
+})();
+
+/* ═══════════════════════════════════
+   TRANSITIONS
+   ═══════════════════════════════════ */
+
+function transitionTo(id) {
+    if (state.transitioning) return;
+    state.transitioning = true;
+
+    const curr = document.getElementById(state.current);
+    const next = document.getElementById(id);
+    const hold = id === 'barred' ? 800 : 450;
+
+    curr.classList.remove('active');
+    curr.classList.add('exiting');
+
+    setTimeout(() => {
+        curr.classList.remove('exiting');
+
+        const answers = next.querySelector('.answers');
+        if (answers) answers.classList.add('answers-enter');
+
+        next.classList.add('active');
+        state.current = id;
+        state.transitioning = false;
+    }, 1100 + hold);
+}
+
+/* ═══════════════════════════════════
+   ANSWER LOGIC
+   ═══════════════════════════════════ */
+
+function selectAnswer(el) {
+    if (state.transitioning) return;
+    const container = el.closest('.answers');
+    if (container.querySelector('.selected')) return;
+
+    el.classList.add('selected');
+    container.querySelectorAll('.answer:not(.selected)').forEach(s => s.classList.add('dimmed'));
+
+    const isBarred = el.dataset.barred === 'true';
+    state.answers.push({ q: el.dataset.question, v: el.dataset.value, barred: isBarred });
+    if (isBarred) state.barred = true;
+
+    const currentQ = 'q' + el.dataset.question;
+    const next = state.barred ? 'barred' : (flow[currentQ] || 'accepted');
+
+    setTimeout(() => transitionTo(next), 950);
+}
+
+/* ═══════════════════════════════════
+   EVENT BINDING
+   ═══════════════════════════════════ */
+
+document.getElementById('btn-enter').addEventListener('click', () => transitionTo('declaration'));
+document.getElementById('btn-declare').addEventListener('click', () => transitionTo('q1'));
+
+document.querySelectorAll('.answer').forEach(el => {
+    el.addEventListener('click', () => selectAnswer(el));
+    el.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectAnswer(el); }
+    });
+});
+
+document.querySelectorAll('.tier').forEach(el => {
+    const handler = () => {
+        el.style.borderColor = 'rgba(201, 162, 39, 0.5)';
+        el.style.background = 'rgba(201, 162, 39, 0.05)';
+        console.log('Selected:', el.dataset.tier);
+    };
+    el.addEventListener('click', handler);
+    el.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handler(); }
+    });
+});
+</script>
+</body>
+</html>

@@ -3,24 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Court of MÓRA — Courtship for the Sincere</title>
+<title>The Court of MÓRA — A Vision</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════
-   THE GARDEN — MORA COLOR SYSTEM
-   No pure black. No white. No grey.
-   "From the garden (Kert), through
-    patient tending, comes the harvest
-    (Bor), laid upon the table (Csont),
-    blessed by the light (Arany)."
-   ═══════════════════════════════════ */
-
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    /* Erdő — The Garden */
     --garden-abyss: #040C06;
     --garden-deep: #081410;
     --garden-dark: #0E2218;
@@ -30,7 +20,6 @@
     --garden-bright: #5A9B6E;
     --garden-pale: #7AB88A;
 
-    /* Bor — The Rose */
     --rose-shadow: #3A1218;
     --rose-deep: #5A2028;
     --rose-true: #722F37;
@@ -38,37 +27,37 @@
     --rose-light: #A04550;
     --rose-blush: #C06070;
 
-    /* Arany — The Light */
     --gold-true: #C9A227;
     --gold-warm: #D4B040;
     --gold-dim: rgba(201, 162, 39, 0.15);
 
-    /* Tejszín — The Canvas */
     --cream: #F5F0E6;
     --cream-muted: #C8BFA8;
     --cream-dim: #8A7E6A;
     --cream-faint: #5A5240;
 
-    /* Tégla — Earth warmth */
     --terra: #C67D5E;
 
     --font-display: 'Cormorant Garamond', 'Georgia', serif;
     --font-body: 'EB Garamond', 'Georgia', serif;
 }
 
-html, body {
-    height: 100%;
-    overflow: hidden;
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--garden-mid) var(--garden-abyss);
+}
+
+body {
     background: var(--garden-abyss);
     color: var(--cream);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
 /* ═══════════════════════════════════
-   PAINTED ATMOSPHERE
-   Multiple light sources like a
-   garden at golden hour through mist
+   ATMOSPHERE — fixed garden backdrop
    ═══════════════════════════════════ */
 
 .atmosphere {
@@ -77,34 +66,23 @@ html, body {
     z-index: 0;
     pointer-events: none;
     background:
-        /* Golden hour warmth — center */
-        radial-gradient(ellipse 40% 35% at 50% 35%, rgba(201, 162, 39, 0.045) 0%, transparent 70%),
-        /* Garden depth — left grove */
-        radial-gradient(ellipse 55% 50% at 15% 55%, rgba(44, 85, 48, 0.14) 0%, transparent 55%),
-        /* Garden depth — right grove */
-        radial-gradient(ellipse 50% 55% at 85% 45%, rgba(26, 58, 37, 0.16) 0%, transparent 55%),
-        /* Rose warmth — lower left */
-        radial-gradient(ellipse 25% 22% at 8% 88%, rgba(114, 47, 55, 0.07) 0%, transparent 50%),
-        /* Rose warmth — upper right */
-        radial-gradient(ellipse 22% 25% at 92% 12%, rgba(114, 47, 55, 0.05) 0%, transparent 50%),
-        /* Terracotta earth — bottom */
-        radial-gradient(ellipse 60% 20% at 50% 95%, rgba(198, 125, 94, 0.03) 0%, transparent 60%),
-        /* Vignette — painting edge */
-        radial-gradient(ellipse 65% 60% at 50% 48%, transparent 45%, rgba(4, 12, 6, 0.5) 100%),
-        /* Base garden gradient */
+        radial-gradient(ellipse 40% 35% at 50% 35%, rgba(201, 162, 39, 0.03) 0%, transparent 70%),
+        radial-gradient(ellipse 55% 50% at 15% 55%, rgba(44, 85, 48, 0.1) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 55% at 85% 45%, rgba(26, 58, 37, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 25% 22% at 8% 88%, rgba(114, 47, 55, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse 22% 25% at 92% 12%, rgba(114, 47, 55, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse 65% 60% at 50% 48%, transparent 45%, rgba(4, 12, 6, 0.4) 100%),
         linear-gradient(170deg, var(--garden-deep) 0%, var(--garden-dark) 40%, var(--garden-abyss) 100%);
 }
 
-/* Drifting mist layer */
 .mist {
     position: fixed;
     inset: -10%;
     z-index: 1;
     pointer-events: none;
     background:
-        radial-gradient(ellipse 35% 30% at 35% 45%, rgba(245, 240, 230, 0.025) 0%, transparent 70%),
-        radial-gradient(ellipse 30% 25% at 65% 55%, rgba(245, 240, 230, 0.018) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 20% at 50% 80%, rgba(44, 85, 48, 0.04) 0%, transparent 60%);
+        radial-gradient(ellipse 35% 30% at 35% 45%, rgba(245, 240, 230, 0.02) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 25% at 65% 55%, rgba(245, 240, 230, 0.015) 0%, transparent 65%);
     animation: mistDrift 40s ease-in-out infinite alternate;
 }
 
@@ -113,7 +91,6 @@ html, body {
     100% { transform: translate(25px, -15px) scale(1.02); }
 }
 
-/* Particle system — pollen and light motes */
 .particles { position: fixed; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
 
 .particle {
@@ -133,114 +110,85 @@ html, body {
     100% { transform: translate(var(--dx), var(--dy)) scale(0.3); opacity: 0; }
 }
 
-/* Canvas texture */
-.canvas {
-    position: fixed;
-    inset: 0;
-    z-index: 998;
-    pointer-events: none;
-    opacity: 0.012;
-    mix-blend-mode: overlay;
+/* ═══════════════════════════════════
+   CONTENT FLOW
+   ═══════════════════════════════════ */
+
+.content {
+    position: relative;
+    z-index: 10;
 }
 
 /* ═══════════════════════════════════
-   BOTANICAL FRAME
-   Roses, leaves, vines — the garden
-   that frames the courtship
+   SECTIONS — rooms of the House
    ═══════════════════════════════════ */
 
-.botanicals {
-    position: fixed;
-    inset: 0;
-    z-index: 3;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.botanical {
-    position: absolute;
-    transition: opacity 2s ease;
-}
-
-.botanical-bg { filter: blur(2.5px); }
-.botanical-mid { filter: blur(0.8px); }
-.botanical-fg { filter: blur(0); }
-
-/* Gentle sway animation for botanicals */
-@keyframes sway {
-    0%, 100% { transform: rotate(var(--base-rot, 0deg)) translate(0, 0); }
-    50% { transform: rotate(calc(var(--base-rot, 0deg) + 1deg)) translate(1px, -2px); }
-}
-
-.botanical-sway { animation: sway var(--sway-dur, 12s) ease-in-out infinite; }
-
-/* ═══════════════════════════════════
-   SCREEN SYSTEM
-   ═══════════════════════════════════ */
-
-.screen {
-    position: fixed;
-    inset: 0;
+.room {
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
-    z-index: 10;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 1.2s ease, visibility 0s 1.2s;
-}
-
-.screen.active {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 1.4s ease, visibility 0s 0s;
-}
-
-.screen.exiting {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 1.1s ease, visibility 0s 1.1s;
-}
-
-.screen-content {
-    max-width: 560px;
-    width: 100%;
-    text-align: center;
+    padding: 6rem 2rem;
     position: relative;
 }
 
-/* ═══════════════════════════════════
-   HUNGARIAN EMBROIDERY ORNAMENT
-   Symmetrical floral divider
-   inspired by Kalocsai motifs
-   ═══════════════════════════════════ */
+.room-inner {
+    max-width: 720px;
+    width: 100%;
+}
 
-.embroidery-ornament {
-    display: block;
-    margin: 2rem auto;
-    width: clamp(200px, 50vw, 320px);
-    height: auto;
-    opacity: 0.55;
+/* Opening room is taller */
+.room--opening {
+    min-height: 100vh;
+    text-align: center;
+}
+
+.room--centered {
+    text-align: center;
 }
 
 /* ═══════════════════════════════════
-   THE GATE
+   REVEAL ANIMATION SYSTEM
    ═══════════════════════════════════ */
 
-.court-label {
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.4s ease, transform 1.4s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.2s; }
+.reveal-delay-2 { transition-delay: 0.4s; }
+.reveal-delay-3 { transition-delay: 0.6s; }
+.reveal-delay-4 { transition-delay: 0.8s; }
+.reveal-delay-5 { transition-delay: 1.0s; }
+.reveal-delay-6 { transition-delay: 1.2s; }
+
+.reveal-slow {
+    transition-duration: 2.2s;
+}
+
+/* ═══════════════════════════════════
+   TYPOGRAPHY
+   ═══════════════════════════════════ */
+
+.t-court-label {
     font-family: var(--font-display);
     font-size: clamp(0.6rem, 1vw, 0.75rem);
     font-weight: 400;
     letter-spacing: 0.45em;
     text-transform: uppercase;
     color: var(--cream-muted);
-    margin-bottom: 0.6rem;
 }
 
-.brand-name {
+.t-brand {
     font-family: var(--font-display);
-    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-size: clamp(3.5rem, 8vw, 7rem);
     font-weight: 300;
     letter-spacing: 0.5em;
     text-transform: uppercase;
@@ -249,9 +197,9 @@ html, body {
     text-shadow: 0 0 60px rgba(201, 162, 39, 0.08);
 }
 
-.tagline {
+.t-tagline {
     font-family: var(--font-body);
-    font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+    font-size: clamp(0.9rem, 1.4vw, 1.15rem);
     font-weight: 400;
     font-style: italic;
     color: var(--cream-dim);
@@ -259,249 +207,347 @@ html, body {
     margin-top: 0.3rem;
 }
 
-/* ═══════════════════════════════════
-   BUTTONS
-   ═══════════════════════════════════ */
-
-.btn {
-    display: inline-block;
-    margin-top: 3rem;
+.t-section-label {
     font-family: var(--font-display);
-    font-size: clamp(0.78rem, 1.1vw, 0.9rem);
+    font-size: clamp(0.55rem, 0.9vw, 0.68rem);
     font-weight: 400;
-    letter-spacing: 0.3em;
-    text-transform: lowercase;
-    color: var(--cream-dim);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.8rem 0;
-    position: relative;
-    transition: color 0.6s ease;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold-true);
+    opacity: 0.6;
+    margin-bottom: 2rem;
 }
 
-.btn::after {
-    content: '';
-    position: absolute;
-    bottom: 0.15rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold-true), transparent);
-    opacity: 0.5;
-    transition: width 0.6s ease;
-}
-
-.btn:hover { color: var(--cream); }
-.btn:hover::after { width: 100%; }
-.btn:focus-visible { outline: 1px solid var(--gold-dim); outline-offset: 10px; }
-
-.btn-declare {
-    font-variant: small-caps;
-    letter-spacing: 0.35em;
-    font-size: clamp(0.82rem, 1.2vw, 0.95rem);
-    color: var(--cream-muted);
-}
-
-/* ═══════════════════════════════════
-   DECLARATION
-   ═══════════════════════════════════ */
-
-.declaration-preface {
+.t-heading {
     font-family: var(--font-display);
-    font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
     font-weight: 300;
-    color: var(--cream-dim);
-    letter-spacing: 0.04em;
-}
-
-.declaration-text {
-    font-family: var(--font-body);
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
-    font-weight: 400;
-    font-style: italic;
-    line-height: 2.3;
+    line-height: 1.25;
     color: var(--cream);
+    letter-spacing: 0.03em;
 }
 
-/* ═══════════════════════════════════
-   QUESTIONS
-   ═══════════════════════════════════ */
+.t-heading-sm {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    font-weight: 300;
+    line-height: 1.35;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+}
 
-.scenario {
+.t-body {
     font-family: var(--font-body);
-    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    font-weight: 400;
+    line-height: 2;
+    color: var(--cream-muted);
+    letter-spacing: 0.015em;
+}
+
+.t-body-lg {
+    font-family: var(--font-body);
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
     font-weight: 400;
     font-style: italic;
-    line-height: 2;
+    line-height: 2.2;
     color: var(--cream);
     letter-spacing: 0.015em;
 }
 
-.scenario em { font-style: normal; font-weight: 500; }
-
-/* ═══════════════════════════════════
-   ANSWERS
-   ═══════════════════════════════════ */
-
-.answers {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-}
-
-.answer {
-    font-family: var(--font-body);
-    font-size: clamp(0.92rem, 1.4vw, 1.06rem);
-    font-weight: 400;
-    line-height: 1.8;
-    color: var(--cream-dim);
-    padding: 1.1rem 1.5rem;
-    cursor: pointer;
-    border-left: 2px solid transparent;
-    transition: color 0.4s ease, border-color 0.5s ease, background 0.5s ease, opacity 0.7s ease;
-    position: relative;
-}
-
-.answer::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(114, 47, 55, 0.06) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-}
-
-.answer:hover {
-    color: var(--cream);
-    border-left-color: var(--rose-true);
-}
-
-.answer:hover::before { opacity: 1; }
-
-.answer:focus-visible {
-    outline: 1px solid var(--gold-dim);
-    outline-offset: -2px;
-}
-
-.answer.selected {
-    color: var(--cream);
-    border-left-color: var(--rose-light);
-    background: rgba(114, 47, 55, 0.1);
-}
-
-.answer.dimmed { opacity: 0.12; pointer-events: none; }
-
-/* Staggered entrance */
-.answers-enter .answer {
-    opacity: 0;
-    transform: translateY(8px);
-    animation: answerIn 1s ease forwards;
-}
-.answers-enter .answer:nth-child(1) { animation-delay: 0.5s; }
-.answers-enter .answer:nth-child(2) { animation-delay: 0.8s; }
-.answers-enter .answer:nth-child(3) { animation-delay: 1.1s; }
-
-@keyframes answerIn { to { opacity: 1; transform: translateY(0); } }
-
-/* ═══════════════════════════════════
-   VERDICT: ACCEPTED
-   ═══════════════════════════════════ */
-
-.verdict-accepted::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        ellipse 50% 40% at 50% 45%,
-        rgba(201, 162, 39, 0.04) 0%,
-        rgba(44, 85, 48, 0.02) 40%,
-        transparent 70%
-    );
-    z-index: 0;
-    animation: warmBloom 3s ease forwards;
-}
-
-@keyframes warmBloom {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.verdict-text {
+.t-quote {
     font-family: var(--font-display);
-    font-size: clamp(1.25rem, 2.5vw, 1.7rem);
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
     font-weight: 300;
     font-style: italic;
+    line-height: 1.9;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+}
+
+.t-small {
+    font-family: var(--font-body);
+    font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+    color: var(--cream-dim);
     line-height: 1.8;
-    letter-spacing: 0.05em;
-    position: relative;
-    z-index: 1;
 }
 
-.verdict-accepted .verdict-text { color: var(--cream); }
-
-.verdict-accepted.active .verdict-text {
-    opacity: 0;
-    animation: warmReveal 2s ease forwards 0.3s;
-}
-
-@keyframes warmReveal { to { opacity: 1; } }
+.t-gold { color: var(--gold-true); }
+.t-rose { color: var(--rose-light); }
+.t-dim { color: var(--cream-dim); }
+.t-faint { color: var(--cream-faint); }
 
 /* ═══════════════════════════════════
-   TIERS
+   DECORATIVE ELEMENTS
    ═══════════════════════════════════ */
 
-.tiers {
+.divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-true), transparent);
+    opacity: 0.3;
+    margin: 2.5rem 0;
+}
+
+.divider--centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.divider--wide {
+    width: 120px;
+}
+
+.spacer { height: 3rem; }
+.spacer-lg { height: 5rem; }
+
+/* Gold accent line on left */
+.accent-border {
+    border-left: 1px solid rgba(201, 162, 39, 0.2);
+    padding-left: 2rem;
+}
+
+/* ═══════════════════════════════════
+   SECTION DIVIDERS — between rooms
+   ═══════════════════════════════════ */
+
+.room-divider {
+    height: 20vh;
     display: flex;
-    gap: 1.3rem;
-    margin-top: 3.5rem;
+    align-items: center;
     justify-content: center;
-    opacity: 0;
-    visibility: hidden;
     position: relative;
-    z-index: 1;
+    z-index: 10;
 }
 
-.verdict-accepted.active .tiers {
-    animation: tiersReveal 1.2s ease forwards 2.8s;
+.room-divider::before {
+    content: '';
+    width: 1px;
+    height: 60%;
+    background: linear-gradient(180deg, transparent, rgba(201, 162, 39, 0.15), transparent);
 }
 
-@keyframes tiersReveal { to { opacity: 1; visibility: visible; } }
+/* ═══════════════════════════════════
+   THE DANGER CARD
+   ═══════════════════════════════════ */
 
-.tier {
+.danger-card {
+    background: rgba(114, 47, 55, 0.08);
+    border: 1px solid rgba(114, 47, 55, 0.2);
+    padding: 2.5rem;
+    margin: 2rem 0;
+}
+
+.danger-card .t-heading-sm {
+    color: var(--rose-light);
+}
+
+/* ═══════════════════════════════════
+   THE UDVAR DIAGRAM
+   ═══════════════════════════════════ */
+
+.udvar-diagram {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin: 3rem 0;
+    position: relative;
+}
+
+.udvar-column {
     flex: 1;
-    max-width: 168px;
-    padding: 2rem 1.1rem;
-    border: 1px solid rgba(44, 85, 48, 0.2);
-    cursor: pointer;
+    max-width: 200px;
     text-align: center;
-    transition: border-color 0.5s ease, background 0.5s ease, transform 0.5s ease;
+    padding: 2rem 1.2rem;
     position: relative;
 }
 
-.tier::before {
+.udvar-column::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    right: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(201, 162, 39, 0.12), transparent);
+}
+
+.udvar-column:last-child::after { display: none; }
+
+.udvar-word {
+    font-family: var(--font-display);
+    font-size: clamp(0.6rem, 0.85vw, 0.72rem);
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold-true);
+    opacity: 0.7;
+    margin-bottom: 1.2rem;
+}
+
+.udvar-meaning {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 0.8rem;
+}
+
+.udvar-essence {
+    font-family: var(--font-body);
+    font-size: clamp(0.82rem, 1.1vw, 0.92rem);
+    font-style: italic;
+    color: var(--cream-dim);
+    line-height: 1.7;
+}
+
+.udvar-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--cream);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.udvar-subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    font-style: italic;
+    color: var(--cream-dim);
+    text-align: center;
+    letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════════
+   COMPARISON TABLE
+   ═══════════════════════════════════ */
+
+.compare-table {
+    width: 100%;
+    margin: 2rem 0;
+    border-collapse: collapse;
+}
+
+.compare-table th {
+    font-family: var(--font-display);
+    font-size: clamp(0.6rem, 0.85vw, 0.72rem);
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-true);
+    opacity: 0.6;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+}
+
+.compare-table td {
+    font-family: var(--font-body);
+    font-size: clamp(0.88rem, 1.15vw, 1rem);
+    color: var(--cream-muted);
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid rgba(44, 85, 48, 0.08);
+    line-height: 1.6;
+    vertical-align: top;
+}
+
+.compare-table td:first-child {
+    color: var(--cream-dim);
+    width: 30%;
+}
+
+.compare-table tr:last-child td {
+    border-bottom: none;
+}
+
+.compare-table .col-house { color: var(--cream); }
+.compare-table .col-dating { color: var(--rose-light); opacity: 0.6; }
+
+/* ═══════════════════════════════════
+   VISION CARDS
+   ═══════════════════════════════════ */
+
+.vision-card {
+    background: linear-gradient(135deg, rgba(14, 34, 24, 0.6) 0%, rgba(8, 20, 16, 0.8) 100%);
+    border: 1px solid rgba(44, 85, 48, 0.2);
+    padding: 3rem;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.vision-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 10%, rgba(201, 162, 39, 0.2) 50%, transparent 90%);
+}
+
+.vision-card--primary {
+    border-color: rgba(201, 162, 39, 0.15);
+}
+
+.vision-card--future {
+    opacity: 0.6;
+    border-style: dashed;
+}
+
+.vision-number {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 8vw, 6rem);
+    font-weight: 300;
+    color: var(--gold-true);
+    opacity: 0.08;
+    position: absolute;
+    top: -0.5rem;
+    right: 1.5rem;
+    line-height: 1;
+}
+
+/* ═══════════════════════════════════
+   TIER CARDS
+   ═══════════════════════════════════ */
+
+.tiers-row {
+    display: flex;
+    gap: 1.2rem;
+    margin: 2rem 0;
+}
+
+.tier-card {
+    flex: 1;
+    padding: 2rem 1.2rem;
+    border: 1px solid rgba(44, 85, 48, 0.2);
+    text-align: center;
+    position: relative;
+    transition: border-color 0.5s ease;
+}
+
+.tier-card:hover {
+    border-color: rgba(201, 162, 39, 0.25);
+}
+
+.tier-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(201, 162, 39, 0.04) 0%, transparent 70%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(201, 162, 39, 0.03) 0%, transparent 70%);
     opacity: 0;
     transition: opacity 0.5s ease;
 }
 
-.tier:hover {
-    border-color: rgba(201, 162, 39, 0.3);
-    transform: translateY(-3px);
-}
-
-.tier:hover::before { opacity: 1; }
+.tier-card:hover::before { opacity: 1; }
 
 .tier-name {
     font-family: var(--font-display);
-    font-size: clamp(0.68rem, 1vw, 0.8rem);
+    font-size: clamp(0.6rem, 0.9vw, 0.72rem);
     font-weight: 600;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--gold-true);
     opacity: 0.7;
@@ -510,388 +556,1124 @@ html, body {
 
 .tier-price {
     font-family: var(--font-display);
-    font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
     font-weight: 300;
     color: var(--cream);
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
 }
 
 .tier-signal {
     font-family: var(--font-body);
-    font-size: clamp(0.72rem, 1vw, 0.82rem);
-    font-weight: 400;
+    font-size: clamp(0.78rem, 1vw, 0.88rem);
     font-style: italic;
     color: var(--cream-dim);
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+}
+
+.tier-includes {
+    text-align: left;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(44, 85, 48, 0.12);
+}
+
+.tier-includes li {
+    font-family: var(--font-body);
+    font-size: clamp(0.75rem, 1vw, 0.85rem);
+    color: var(--cream-dim);
+    line-height: 1.7;
+    list-style: none;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.tier-includes li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--garden-light);
 }
 
 /* ═══════════════════════════════════
-   VERDICT: BARRED
+   TIMELINE
    ═══════════════════════════════════ */
 
-.verdict-barred .verdict-text {
-    color: var(--cream-faint);
+.timeline {
+    position: relative;
+    padding-left: 3rem;
+    margin: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg,
+        transparent,
+        var(--garden-mid) 10%,
+        var(--gold-true) 30%,
+        var(--gold-true) 70%,
+        var(--garden-mid) 90%,
+        transparent
+    );
+    opacity: 0.3;
+}
+
+.timeline-node {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.timeline-node::before {
+    content: '';
+    position: absolute;
+    left: -3rem;
+    top: 0.5rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold-true);
+    opacity: 0.5;
+    transform: translateX(-3px);
+}
+
+.timeline-node--active::before {
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(201, 162, 39, 0.3);
+}
+
+.timeline-date {
+    font-family: var(--font-display);
+    font-size: clamp(0.6rem, 0.85vw, 0.7rem);
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-true);
+    opacity: 0.6;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+}
+
+.timeline-desc {
+    font-family: var(--font-body);
+    font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+    color: var(--cream-dim);
+    line-height: 1.8;
+}
+
+/* ═══════════════════════════════════
+   THE FLOW DIAGRAM
+   ═══════════════════════════════════ */
+
+.flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.flow-number {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.2rem);
+    font-weight: 300;
+    color: var(--gold-true);
+    opacity: 0.3;
+    min-width: 2.5rem;
+    text-align: right;
+    line-height: 1.2;
+}
+
+.flow-content {
+    flex: 1;
+    padding-top: 0.2rem;
+}
+
+.flow-title {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+}
+
+.flow-desc {
+    font-family: var(--font-body);
+    font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+    color: var(--cream-dim);
+    line-height: 1.7;
+}
+
+/* ═══════════════════════════════════
+   CHAPTER CARDS (Documentary)
+   ═══════════════════════════════════ */
+
+.chapters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.chapter-card {
+    padding: 1.5rem;
+    border: 1px solid rgba(44, 85, 48, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.chapter-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--rose-true), var(--gold-true));
     opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
-.verdict-barred.active .verdict-text {
-    animation: coldReveal 3s ease forwards 1s;
+.chapter-card:hover::after { opacity: 0.3; }
+
+.chapter-num {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 2.5rem);
+    font-weight: 300;
+    color: var(--gold-true);
+    opacity: 0.12;
+    margin-bottom: 0.5rem;
 }
 
-@keyframes coldReveal { to { opacity: 1; } }
+.chapter-title {
+    font-family: var(--font-display);
+    font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+}
+
+.chapter-desc {
+    font-family: var(--font-body);
+    font-size: clamp(0.78rem, 1vw, 0.85rem);
+    color: var(--cream-dim);
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* ═══════════════════════════════════
+   REVENUE PROJECTION
+   ═══════════════════════════════════ */
+
+.revenue-bar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.revenue-year {
+    font-family: var(--font-display);
+    font-size: clamp(0.7rem, 0.95vw, 0.8rem);
+    letter-spacing: 0.15em;
+    color: var(--cream-dim);
+    min-width: 4.5rem;
+    text-align: right;
+}
+
+.revenue-track {
+    flex: 1;
+    height: 3px;
+    background: rgba(44, 85, 48, 0.15);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.revenue-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--garden-true), var(--gold-true));
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 2s ease;
+}
+
+.revenue-fill.animate { transform: scaleX(1); }
+
+.revenue-amount {
+    font-family: var(--font-display);
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    font-weight: 400;
+    color: var(--cream);
+    min-width: 6rem;
+}
+
+/* ═══════════════════════════════════
+   CLOSING SECTION
+   ═══════════════════════════════════ */
+
+.closing-motto {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold-true);
+    opacity: 0.6;
+    letter-spacing: 0.08em;
+    text-align: center;
+}
+
+/* ═══════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════ */
+
+.doc-footer {
+    text-align: center;
+    padding: 4rem 2rem 3rem;
+    position: relative;
+    z-index: 10;
+}
+
+.doc-footer-text {
+    font-family: var(--font-display);
+    font-size: clamp(0.6rem, 0.8vw, 0.68rem);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--cream-faint);
+    opacity: 0.4;
+}
 
 /* ═══════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════ */
 
-@media (max-width: 640px) {
-    .screen { padding: 1.5rem; }
-    .tiers { flex-direction: column; align-items: center; }
-    .tier { max-width: 280px; width: 100%; }
-    .answer { padding: 1rem 1.2rem; }
-    .botanical { transform: scale(0.6) !important; }
+@media (max-width: 768px) {
+    .room { padding: 4rem 1.5rem; }
+    .udvar-diagram { flex-direction: column; align-items: center; }
+    .udvar-column { max-width: 100%; }
+    .udvar-column::after { display: none; }
+    .tiers-row { flex-direction: column; }
+    .tier-card { max-width: 100%; }
+    .chapters { grid-template-columns: 1fr; }
+    .compare-table { font-size: 0.85rem; }
+    .vision-card { padding: 2rem 1.5rem; }
+    .accent-border { padding-left: 1.5rem; }
 }
 
-@media (max-width: 380px) {
-    .brand-name { letter-spacing: 0.35em; margin-right: -0.35em; }
+@media (max-width: 480px) {
+    .room { padding: 3rem 1.2rem; }
+    .t-brand { letter-spacing: 0.3em; margin-right: -0.3em; }
 }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════
-     SVG DEFINITIONS
-     Reusable roses, leaves, vines,
-     embroidery ornament, filters
-     ═══════════════════════════════════ -->
-<svg width="0" height="0" style="position:absolute">
-<defs>
-    <!-- Blur filters for depth -->
-    <filter id="blur-bg"><feGaussianBlur stdDeviation="3"/></filter>
-    <filter id="blur-mid"><feGaussianBlur stdDeviation="1"/></filter>
-
-    <!-- Canvas texture -->
-    <filter id="canvas-grain">
-        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch"/>
-        <feColorMatrix type="saturate" values="0"/>
-    </filter>
-
-    <!-- Full rose — viewed from above -->
-    <g id="rose-full">
-        <ellipse cx="0" cy="-7" rx="16" ry="12" fill="#5A2028" opacity="0.45" transform="rotate(0)"/>
-        <ellipse cx="0" cy="-7" rx="16" ry="12" fill="#5A2028" opacity="0.4" transform="rotate(72)"/>
-        <ellipse cx="0" cy="-7" rx="16" ry="12" fill="#5A2028" opacity="0.45" transform="rotate(144)"/>
-        <ellipse cx="0" cy="-7" rx="16" ry="12" fill="#5A2028" opacity="0.4" transform="rotate(216)"/>
-        <ellipse cx="0" cy="-7" rx="16" ry="12" fill="#5A2028" opacity="0.45" transform="rotate(288)"/>
-        <ellipse cx="0" cy="-4" rx="11" ry="8" fill="#722F37" opacity="0.65" transform="rotate(36)"/>
-        <ellipse cx="0" cy="-4" rx="11" ry="8" fill="#722F37" opacity="0.6" transform="rotate(108)"/>
-        <ellipse cx="0" cy="-4" rx="11" ry="8" fill="#722F37" opacity="0.65" transform="rotate(180)"/>
-        <ellipse cx="0" cy="-4" rx="11" ry="8" fill="#722F37" opacity="0.6" transform="rotate(252)"/>
-        <ellipse cx="0" cy="-4" rx="11" ry="8" fill="#722F37" opacity="0.65" transform="rotate(324)"/>
-        <ellipse cx="0" cy="-2" rx="7" ry="5" fill="#8B3A42" opacity="0.8" transform="rotate(18)"/>
-        <ellipse cx="0" cy="-1" rx="6" ry="4" fill="#8B3A42" opacity="0.85" transform="rotate(-22)"/>
-        <ellipse cx="0" cy="0" rx="4" ry="3" fill="#A04550" opacity="0.9" transform="rotate(8)"/>
-        <circle cx="0" cy="0" r="2" fill="#3A1218"/>
-    </g>
-
-    <!-- Rosebud -->
-    <g id="rosebud">
-        <ellipse cx="0" cy="-3" rx="4" ry="7" fill="#2C5530" opacity="0.7" transform="rotate(-8)"/>
-        <ellipse cx="0" cy="-1" rx="3.5" ry="6" fill="#722F37" opacity="0.7" transform="rotate(5)"/>
-        <ellipse cx="1" cy="0" rx="2.5" ry="5" fill="#8B3A42" opacity="0.8" transform="rotate(-3)"/>
-    </g>
-
-    <!-- Single leaf -->
-    <g id="leaf">
-        <path d="M0,0 Q6,-15 0,-32 Q-6,-15 0,0" fill="#2C5530" opacity="0.7"/>
-        <line x1="0" y1="-1" x2="0" y2="-30" stroke="#1A3A25" stroke-width="0.4" opacity="0.4"/>
-    </g>
-
-    <!-- Leaf pair on stem -->
-    <g id="leaf-pair">
-        <line x1="0" y1="0" x2="0" y2="-40" stroke="#1A3A25" stroke-width="0.8" opacity="0.4"/>
-        <use href="#leaf" transform="translate(-2,-10) rotate(35) scale(0.5)"/>
-        <use href="#leaf" transform="translate(2,-22) rotate(-30) scale(0.6)"/>
-    </g>
-</defs>
-</svg>
-
-<!-- ═══════════════════════════════════
-     ATMOSPHERIC LAYERS
-     ═══════════════════════════════════ -->
+<!-- Atmosphere -->
 <div class="atmosphere"></div>
 <div class="mist"></div>
 <div class="particles" id="particles"></div>
-<div class="canvas" style="filter:url(#canvas-grain)"></div>
 
 <!-- ═══════════════════════════════════
-     BOTANICAL FRAME — THE GARDEN
-     Roses and foliage framing the view
+     CONTENT
      ═══════════════════════════════════ -->
-<div class="botanicals">
-    <!-- Background layer — deep, blurred, dreamlike -->
-    <svg class="botanical botanical-bg" style="position:absolute;top:-5%;left:-5%;width:220px;height:220px;opacity:0.12" viewBox="-50 -50 100 100">
-        <use href="#rose-full" transform="scale(2.2)"/>
-        <use href="#leaf" transform="translate(-35,10) rotate(60) scale(1.2)"/>
-        <use href="#leaf" transform="translate(-30,25) rotate(40) scale(0.9)"/>
-    </svg>
+<div class="content">
 
-    <svg class="botanical botanical-bg" style="position:absolute;bottom:-8%;right:-3%;width:260px;height:260px;opacity:0.1" viewBox="-50 -50 100 100">
-        <use href="#rose-full" transform="scale(2.5) rotate(30)"/>
-        <use href="#leaf" transform="translate(30,15) rotate(-50) scale(1.3)"/>
-    </svg>
 
-    <!-- Mid layer — roses catching golden hour light -->
-    <svg class="botanical botanical-mid botanical-sway" style="position:absolute;top:8%;right:5%;width:100px;height:100px;opacity:0.25;--sway-dur:14s" viewBox="-30 -30 60 60">
-        <use href="#rose-full" transform="scale(1.1)"/>
-        <use href="#leaf-pair" transform="translate(14,8) rotate(-45) scale(0.6)"/>
-    </svg>
+<!-- ═══════════════════════════════════
+     ROOM 1: THE OPENING
+     ═══════════════════════════════════ -->
+<section class="room room--opening room--centered">
+    <div class="room-inner">
+        <div class="reveal reveal-slow">
+            <div class="t-court-label">The Court of</div>
+            <div class="t-brand" style="margin-top:0.3rem">M&#211;RA</div>
+            <div class="divider divider--centered divider--wide" style="margin-top:2rem"></div>
+            <div class="t-tagline" style="margin-top:1.5rem">A House That Went Underground</div>
+            <div class="t-tagline" style="margin-top:0.3rem">Is Now Reopening</div>
+        </div>
 
-    <svg class="botanical botanical-mid botanical-sway" style="position:absolute;bottom:12%;left:4%;width:80px;height:80px;opacity:0.22;--sway-dur:16s" viewBox="-30 -30 60 60">
-        <use href="#rose-full" transform="scale(0.9) rotate(20)"/>
-    </svg>
+        <div class="reveal reveal-delay-3" style="margin-top:5rem">
+            <div class="t-small" style="letter-spacing:0.2em;text-transform:uppercase;opacity:0.35">
+                Vision Document &mdash; February 2026
+            </div>
+        </div>
+    </div>
+</section>
 
-    <svg class="botanical botanical-mid botanical-sway" style="position:absolute;top:35%;left:2%;width:50px;height:70px;opacity:0.2;--sway-dur:18s" viewBox="-15 -45 30 70">
-        <use href="#leaf-pair" transform="scale(1.1)"/>
-    </svg>
 
-    <svg class="botanical botanical-mid botanical-sway" style="position:absolute;bottom:30%;right:3%;width:45px;height:65px;opacity:0.18;--sway-dur:15s" viewBox="-15 -45 30 70">
-        <use href="#leaf-pair" transform="scale(1) rotate(10)"/>
-        <use href="#rosebud" transform="translate(0,-40) scale(0.7)"/>
-    </svg>
+<div class="room-divider"></div>
 
-    <!-- Foreground accents — small, vivid -->
-    <svg class="botanical botanical-fg botanical-sway" style="position:absolute;top:15%;left:8%;width:30px;height:30px;opacity:0.35;--sway-dur:11s" viewBox="-12 -12 24 24">
-        <use href="#rosebud" transform="scale(0.8) rotate(-15)"/>
-    </svg>
 
-    <svg class="botanical botanical-fg botanical-sway" style="position:absolute;bottom:18%;right:7%;width:35px;height:35px;opacity:0.3;--sway-dur:13s" viewBox="-12 -12 24 24">
-        <use href="#rosebud" transform="scale(0.9) rotate(10)"/>
-    </svg>
+<!-- ═══════════════════════════════════
+     ROOM 2: THE LINEAGE
+     ═══════════════════════════════════ -->
+<section class="room">
+    <div class="room-inner">
+        <div class="reveal">
+            <div class="t-section-label">The Lineage</div>
+        </div>
 
-    <!-- Vine tendrils — top edge -->
-    <svg class="botanical botanical-mid" style="position:absolute;top:0;left:12%;width:200px;height:80px;opacity:0.15" viewBox="0 0 200 80">
-        <path d="M0,5 Q40,2 60,15 Q80,30 100,20 Q130,8 160,18 Q180,25 200,15" stroke="#2C5530" stroke-width="1.2" fill="none"/>
-        <use href="#leaf" transform="translate(60,15) rotate(120) scale(0.35)"/>
-        <use href="#leaf" transform="translate(100,18) rotate(-110) scale(0.3)"/>
-        <use href="#leaf" transform="translate(155,16) rotate(125) scale(0.32)"/>
-    </svg>
+        <div class="reveal reveal-delay-1">
+            <div class="t-quote">
+                &ldquo;In &#201;rd, in a windowless 25-square-metre workshop,<br>
+                the great-grandfather kept tailoring.<br>
+                Not because anyone was watching.<br>
+                Because a Mora cannot stop<br>
+                making beautiful things.&rdquo;
+            </div>
+        </div>
 
-    <!-- Vine tendrils — bottom edge -->
-    <svg class="botanical botanical-mid" style="position:absolute;bottom:0;right:10%;width:180px;height:70px;opacity:0.13" viewBox="0 0 180 70">
-        <path d="M0,55 Q30,60 55,50 Q80,38 110,48 Q140,58 180,45" stroke="#2C5530" stroke-width="1" fill="none"/>
-        <use href="#leaf" transform="translate(55,48) rotate(-60) scale(0.3)"/>
-        <use href="#leaf" transform="translate(110,46) rotate(65) scale(0.28)"/>
-    </svg>
+        <div class="reveal reveal-delay-2">
+            <div class="divider"></div>
+        </div>
+
+        <div class="reveal reveal-delay-3">
+            <div class="t-body">
+                The Court of M&#211;RA was not founded in 2026. It existed for generations. When the communists came, they seized the assets, destroyed the homes, built panel housing where gardens once grew. The Court didn't die. It went underground.
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="reveal reveal-delay-4">
+            <div class="t-body">
+                The grandmother sold lampshades door to door. The great-grandfather tailored suits by night for politicians and elites. The mother escaped in 1980, worked three jobs, 14&ndash;16 hour days, rose from employee to business owner within two years. The craft continued in secret.
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="reveal">
+            <div class="t-body-lg" style="text-align:center">
+                Three generations later, the concrete cracks.<br>
+                The garden breaks through.<br><br>
+                The Court is not launching.<br>
+                <span class="t-gold">The Court is reopening.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="room-divider"></div>
+
+
+<!-- ═══════════════════════════════════
+     ROOM 3: THE DANGER
+     ═══════════════════════════════════ -->
+<section class="room">
+    <div class="room-inner">
+        <div class="reveal">
+            <div class="t-section-label">The Concern</div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+            <div class="t-heading">
+                Why the Court<br>
+                <span class="t-rose">cannot become</span><br>
+                a dating website.
+            </div>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+            <div class="divider"></div>
+        </div>
+
+        <div class="reveal reveal-delay-3">
+            <div class="t-body">
+                If the first thing a stranger encounters is a quiz that filters them into a garden where they see other people's declarations and can approach someone &mdash; every brain on earth will pattern-match to &ldquo;dating app.&rdquo;
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="reveal">
+            <div class="danger-card">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>The House</th>
+                            <th>A Dating Site</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Who approaches whom</td>
+                            <td class="col-house">The person approaches the House</td>
+                            <td class="col-dating">Users approach each other</td>
+                        </tr>
+                        <tr>
+                            <td>What&rsquo;s scarce</td>
+                            <td class="col-house">The House&rsquo;s attention</td>
+                            <td class="col-dating">Compatible matches</td>
+                        </tr>
+                        <tr>
+                            <td>10-year trajectory</td>
+                            <td class="col-house">Cultural institution</td>
+                            <td class="col-dating">Acquisition target</td>
+                        </tr>
+                        <tr>
+                            <td>First impression</td>
+                            <td class="col-house">&ldquo;I&rsquo;ve discovered something ancient and alive&rdquo;</td>
+                            <td class="col-dating">&ldquo;I&rsquo;ve found a better way to date&rdquo;</td>
+                        </tr>
+                        <tr>
+                            <td>Founder&rsquo;s role</td>
+                            <td class="col-house">The sovereign of a House</td>
+                            <td class="col-dating">The CEO of a dating startup</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="reveal">
+            <div class="t-body-lg" style="text-align:center">
+                The courtship is between<br>
+                <span class="t-gold">person and House</span>,<br>
+                not person and person.
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="room-divider"></div>
+
+
+<!-- ═══════════════════════════════════
+     ROOM 4: UDVAR — THREE MEANINGS
+     ═══════════════════════════════════ -->
+<section class="room room--centered">
+    <div class="room-inner">
+        <div class="reveal">
+            <div class="t-section-label">The Word</div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+            <div class="udvar-title">Udvar</div>
+            <div class="udvar-subtitle">One word. Three chambers. All three must breathe.</div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="reveal reveal-delay-2">
+            <div class="udvar-diagram">
+                <div class="udvar-column">
+                    <div class="udvar-word">Udvar I</div>
+                    <div class="udvar-meaning">Courtyard</div>
+                    <div class="udvar-essence">The physical space where life happens. Events in Budapest gardens. The pilgrimage to &#201;rd.</div>
+                </div>
+                <div class="udvar-column">
+                    <div class="udvar-word">Udvar II</div>
+                    <div class="udvar-meaning">Royal Court</div>
+                    <div class="udvar-essence">The institution that makes culture. Patronage, taste, standards. Where people are received.</div>
+                </div>
+                <div class="udvar-column">
+                    <div class="udvar-word">Udvar III</div>
+                    <div class="udvar-meaning">Courtship</div>
+                    <div class="udvar-essence">Udvarl&aacute;s. Not the product of the Court &mdash; the climate inside it. What happens between gathered people.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="reveal">
+            <div class="t-body" style="text-align:center;max-width:520px;margin:0 auto">
+                Louis XIV didn&rsquo;t run a dating service at Versailles. He created a world so compelling that every person of taste needed to be there. The marriages that happened at Court were a consequence of the culture, not the product.
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="room-divider"></div>
+
+
+<!-- ═══════════════════════════════════
+     ROOM 5: THE REFRAME
+     ═══════════════════════════════════ -->
+<section class="room room--centered">
+    <div class="room-inner">
+        <div class="reveal">
+            <div class="t-section-label">The Reframe</div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+            <div class="t-heading">
+                One sentence<br>changes everything.
+            </div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="reveal reveal-delay-2">
+            <div style="display:flex;gap:3rem;justify-content:center;flex-wrap:wrap">
+                <div style="text-align:center">
+                    <div class="t-small" style="color:var(--rose-light);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem">Before</div>
+                    <div class="t-body-lg" style="color:var(--cream-dim)">
+                        &ldquo;Are you worthy<br>of love?&rdquo;
+                    </div>
+                    <div class="t-small" style="margin-top:0.8rem;opacity:0.4">= dating app</div>
+                </div>
+                <div style="text-align:center">
+                    <div class="t-small" style="color:var(--gold-true);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem">After</div>
+                    <div class="t-body-lg" style="color:var(--cream)">
+                        &ldquo;Are you worthy<br>of <span class="t-gold">the House</span>?&rdquo;
+                    </div>
+                    <div class="t-small" style="margin-top:0.8rem;opacity:0.4">= cultural institution</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="reveal">
+            <div class="t-body" style="text-align:center;max-width:500px;margin:0 auto">
+                The same examination. The same three questions. The same garden aesthetic. But the frame shifts from matching people &mdash; to receiving them into a House.
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="room-divider"></div>
+
+
+<!-- ═══════════════════════════════════
+     ROOM 6: VISION I — THE REOPENING
+     ═══════════════════════════════════ -->
+<section class="room">
+    <div class="room-inner">
+        <div class="reveal">
+            <div class="t-section-label">Vision I</div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+            <div class="t-heading">
+                The Reopening
+            </div>
+            <div class="t-tagline" style="margin-top:0.5rem">The Court as Cultural Membership Institution</div>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+            <div class="divider"></div>
+        </div>
+
+        <div class="reveal reveal-delay-3">
+            <div class="vision-card vision-card--primary">
+                <div class="vision-number">I</div>
+                <div class="t-body-lg" style="font-style:normal">
+                    moracourt.com is where people are received into the Court of a House that went underground three generations ago and is now reopening.
+                </div>
+                <div class="spacer"></div>
+                <div class="t-body">
+                    Not a dating platform. Not an e-commerce site. A living cultural institution with a gate. Membership is earned through examination, not purchased through a cart.
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <!-- The Flow -->
+        <div class="reveal">
+            <div class="t-heading-sm" style="margin-bottom:2rem">The Journey</div>
+        </div>
+
+        <div class="reveal">
+            <div class="flow-step">
+                <div class="flow-number">1</div>
+                <div class="flow-content">
+                    <div class="flow-title">Arrival</div>
+                    <div class="flow-desc">&ldquo;The Court of M&#211;RA was founded in Szolnok. When the communists came, it went underground. Three generations kept it alive. The Court is reopening. Not everyone will be received.&rdquo;</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reveal">
+            <div class="flow-step">
+                <div class="flow-number">2</div>
+                <div class="flow-content">
+                    <div class="flow-title">Request an Audience</div>
+                    <div class="flow-desc">One button. A declaration of intent. Then the Courtship Examination &mdash; three questions, two red lines. The same quiz already designed. Reframed.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reveal">
+            <div class="flow-step">
+                <div class="flow-number">3</div>
+                <div class="flow-content">
+                    <div class="flow-title">The Verdict</div>
+                    <div class="flow-desc">Accepted: &ldquo;The Court has received you. Choose how you wish to stand.&rdquo; &mdash; Barred: &ldquo;The Court is not ready for you yet.&rdquo;</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reveal">
+            <div class="flow-step">
+                <div class="flow-number">4</div>
+                <div class="flow-content">
+                    <div class="flow-title">Choose Your Standing</div>
+                    <div class="flow-desc">Three tiers of membership. Each tier deepens the relationship between person and House.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <!-- Tiers -->
+        <div class="reveal">
+            <div class="t-heading-sm" style="margin-bottom:0.5rem;text-align:center">Three Tiers of Standing</div>
+            <div class="t-tagline" style="margin-bottom:2rem;text-align:center">Not what you buy. How you stand in the Court.</div>
+        </div>
+
+        <div class="reveal">
+            <div class="tiers-row">
+                <div class="tier-card">
+                    <div class="tier-name">The Ribbon</div>
+                    <div class="tier-price">&euro;50<span class="t-dim" style="font-size:0.7em"> /year</span></div>
+                    <div class="tier-signal">&ldquo;I observe the Court&rdquo;</div>
+                    <ul class="tier-includes">
+                        <li>Seasonal digital letters from the founders</li>
+                        <li>Founding documentary access</li>
+                        <li>Name in the archive</li>
+                    </ul>
+                </div>
+                <div class="tier-card">
+                    <div class="tier-name">The Handkerchief</div>
+                    <div class="tier-price">&euro;200<span class="t-dim" style="font-size:0.7em"> /year</span></div>
+                    <div class="tier-signal">&ldquo;I am received&rdquo;</div>
+                    <ul class="tier-includes">
+                        <li>Physical seasonal objects</li>
+                        <li>Event invitations</li>
+                        <li>Private community</li>
+                        <li>First access to M&#211;RA objects</li>
+                    </ul>
+                </div>
+                <div class="tier-card">
+                    <div class="tier-name">The Lighter</div>
+                    <div class="tier-price">&euro;1,000<span class="t-dim" style="font-size:0.7em">+ /year</span></div>
+                    <div class="tier-signal">&ldquo;I am a Patron of the House&rdquo;</div>
+                    <ul class="tier-includes">
+                        <li>Name inscribed in the archive</li>
+                        <li>Bespoke access</li>
+                        <li>Founding circle membership</li>
+                        <li>Direct correspondence with founders</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <!-- What's Inside -->
+        <div class="reveal">
+            <div class="t-heading-sm" style="margin-bottom:2rem">Inside the Court</div>
+        </div>
+
+        <div class="reveal">
+            <div class="accent-border">
+                <div class="t-body">
+                    <strong style="color:var(--cream)">Seasonal Letters</strong> &mdash; Not marketing emails. Actual correspondence about the building of the House. What was made this season. What was learned. Where the journey has taken us.
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="reveal">
+            <div class="accent-border">
+                <div class="t-body">
+                    <strong style="color:var(--cream)">The Founding Documentary</strong> &mdash; Six chapters released over six months. The world watches a House come into being. Filmed on iPhone. Raw. Intimate. True.
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="reveal">
+            <div class="accent-border">
+                <div class="t-body">
+                    <strong style="color:var(--cream)">First Access to Objects</strong> &mdash; When MORA creates something, Court members see it first. Not a &ldquo;drop.&rdquo; An offering from the House to those who were received.
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="reveal">
+            <div class="accent-border">
+                <div class="t-body">
+                    <strong style="color:var(--cream)">Events</strong> &mdash; The Courtship Letters evenings in Budapest gardens. Gallery walks. The piano recitals. Living expressions of the Court&rsquo;s culture.
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="reveal">
+            <div class="accent-border">
+                <div class="t-body">
+                    <strong style="color:var(--cream)">The Emergent Culture</strong> &mdash; No matching. No profiles. No approaching strangers. The Court gathers extraordinary people in one place. What happens between gathered people &mdash; that is the culture of the Court, not the product.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="room-divider"></div>
+
+
+<!-- ═══════════════════════════════════
+     ROOM 7: VISION II — THE FOUNDING DOCUMENTARY
+     ═══════════════════════════════════ -->
+<section class="room">
+    <div class="room-inner">
+        <div class="reveal">
+            <div class="t-section-label">Vision II</div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+            <div class="t-heading">
+                The Founding<br>Documentary
+            </div>
+            <div class="t-tagline" style="margin-top:0.5rem">The Court as Living Archive</div>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+            <div class="divider"></div>
+        </div>
+
+        <div class="reveal reveal-delay-3">
+            <div class="vision-card vision-card--primary">
+                <div class="vision-number">II</div>
+                <div class="t-body-lg" style="font-style:normal">
+                    No one has ever done this. Houses launch and tell their story backward. M&#211;RA tells its story forward. In real time. The world watches a House being born.
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="reveal">
+            <div class="t-heading-sm" style="margin-bottom:2rem">Six Chapters</div>
+        </div>
+
+        <div class="reveal">
+            <div class="chapters">
+                <div class="chapter-card">
+                    <div class="chapter-num">I</div>
+                    <div class="chapter-title">The Gallery</div>
+                    <div class="chapter-desc">Melbourne. The farewell. &ldquo;The Last Gal.&rdquo; Packing the paintings. The life left behind.</div>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-num">II</div>
+                    <div class="chapter-title">The Workshop</div>
+                    <div class="chapter-desc">&#201;rd. The great-grandfather&rsquo;s 25sqm. The door opens. First stitch in the ancestral space.</div>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-num">III</div>
+                    <div class="chapter-title">The Garden</div>
+                    <div class="chapter-desc">Budapest. The thermal waters. The courtship philosophy takes physical form.</div>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-num">IV</div>
+                    <div class="chapter-title">The Objects</div>
+                    <div class="chapter-desc">The handkerchief. The lighter. The correspondence set. How they are made. Why they matter.</div>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-num">V</div>
+                    <div class="chapter-title">The Court</div>
+                    <div class="chapter-desc">Az Udvar. The first ten people received. The handkerchief deliveries. The founding circle.</div>
+                </div>
+                <div class="chapter-card">
+                    <div class="chapter-num">VI</div>
+                    <div class="chapter-title">The House</div>
+                    <div class="chapter-desc">The moment it becomes real. Not a launch date. A threshold crossed. &ldquo;A House is coming.&rdquo;</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="reveal">
+            <div class="t-body" style="text-align:center;max-width:520px;margin:0 auto">
+                At the end of each chapter, a single object is offered. Not &ldquo;buy now.&rdquo; Rather: <em>&ldquo;This object was made during the filming of Chapter&nbsp;III. There are 111. To receive one is to become part of the founding.&rdquo;</em>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="reveal">
+            <div class="t-body" style="text-align:center;max-width:520px;margin:0 auto">
+                The documentary is not marketing. It is the content that makes M&#211;RA culturally inevitable before a single garment is mass-produced.
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="room-divider"></div>
+
+
+<!-- ═══════════════════════════════════
+     ROOM 8: VISION III — THE COMMISSION GATE (FUTURE)
+     ═══════════════════════════════════ -->
+<section class="room">
+    <div class="room-inner">
+        <div class="reveal">
+            <div class="t-section-label">Vision III &mdash; Future Phase</div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+            <div class="t-heading" style="opacity:0.5">
+                The Commission Gate
+            </div>
+            <div class="t-tagline" style="margin-top:0.5rem;opacity:0.5">Activated when the House has 10+ objects</div>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+            <div class="divider"></div>
+        </div>
+
+        <div class="reveal">
+            <div class="vision-card vision-card--future">
+                <div class="vision-number">III</div>
+                <div class="t-body" style="opacity:0.7">
+                    When the House has the Sz&#369;r coat, the perfume seasons, the Tarca bag, the full garment line &mdash; moracourt.com evolves. You don&rsquo;t buy from M&#211;RA. You commission. The examination determines whether the House will accept your request. You enter a correspondence. An object is designed. It arrives in ritual packaging.
+                </div>
+                <div class="spacer"></div>
+                <div class="t-body" style="opacity:0.7">
+                    This is how great Houses actually operated. You didn&rsquo;t walk into a Savile Row tailor and grab something off the rack. You were measured. You were consulted. You were known.
+                </div>
+                <div class="spacer"></div>
+                <div class="t-small" style="opacity:0.4;font-style:italic">
+                    Not yet. The House needs its objects first. But the architecture is ready.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="room-divider"></div>
+
+
+<!-- ═══════════════════════════════════
+     ROOM 9: THE PHASED APPROACH
+     ═══════════════════════════════════ -->
+<section class="room">
+    <div class="room-inner">
+        <div class="reveal">
+            <div class="t-section-label">The Sequence</div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+            <div class="t-heading">
+                How the Court<br>comes into being.
+            </div>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+            <div class="divider"></div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="reveal">
+            <div class="timeline">
+                <div class="timeline-node timeline-node--active">
+                    <div class="timeline-date">Now &rarr; March 21</div>
+                    <div class="timeline-title">The Documentary Begins</div>
+                    <div class="timeline-desc">Filming starts. Chapter I: The Gallery. Farewell event: &ldquo;The Last Gal.&rdquo; Raw, iPhone, intimate. No platform needed yet &mdash; pure content capture.</div>
+                </div>
+
+                <div class="timeline-node timeline-node--active">
+                    <div class="timeline-date">March 21 &rarr; May 22</div>
+                    <div class="timeline-title">Chapter I Airs &middot; Az Udvar Opens</div>
+                    <div class="timeline-desc">Documentary Chapter I released. The first 10 commissions open: Az Udvar &mdash; 10 handkerchief deliveries to the founding circle. Adel Mora lamps launch.</div>
+                </div>
+
+                <div class="timeline-node">
+                    <div class="timeline-date">May 22 &rarr; Summer Solstice</div>
+                    <div class="timeline-title">The Court Opens for Membership</div>
+                    <div class="timeline-desc">moracourt.com goes live. The Courtship Examination. Three tiers of membership. The Court is now receiving. First product drop to members.</div>
+                </div>
+
+                <div class="timeline-node">
+                    <div class="timeline-date">Year 1&ndash;2</div>
+                    <div class="timeline-title">The Court Builds Culture</div>
+                    <div class="timeline-desc">Seasonal letters. Events in Budapest. Courtship Letters evenings in gardens. Documentary chapters continue. The membership deepens. Objects multiply.</div>
+                </div>
+
+                <div class="timeline-node">
+                    <div class="timeline-date">Year 2&ndash;3</div>
+                    <div class="timeline-title">The Courtship Season</div>
+                    <div class="timeline-desc">24 selected participants. 6 European cities. 6-month cinematic documentary. The cultural statement that makes M&#211;RA inevitable. The Commission Gate opens.</div>
+                </div>
+
+                <div class="timeline-node">
+                    <div class="timeline-date">Year 5+</div>
+                    <div class="timeline-title">The House</div>
+                    <div class="timeline-desc">M&#211;RA Budapest fully operational. Castle Hill HQ. All three visions running simultaneously: membership, documentary, commissions. The Court is an institution.</div>
+                </div>
+
+                <div class="timeline-node">
+                    <div class="timeline-date">Year 10</div>
+                    <div class="timeline-title">The Measure</div>
+                    <div class="timeline-desc">&euro;100M+ across all lines: perfume, leather, fashion, membership, commissions, experiences, AQUAMORA. Not for revenue&rsquo;s sake &mdash; as the measure of impact.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="room-divider"></div>
+
+
+<!-- ═══════════════════════════════════
+     ROOM 10: THE 10-YEAR VISION
+     ═══════════════════════════════════ -->
+<section class="room">
+    <div class="room-inner">
+        <div class="reveal">
+            <div class="t-section-label">The Horizon</div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+            <div class="t-heading">
+                What &euro;100M<br>looks like.
+            </div>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+            <div class="divider"></div>
+        </div>
+
+        <div class="reveal reveal-delay-3">
+            <div class="t-body" style="margin-bottom:2.5rem">
+                Not vanity. The measure of cultural gravity. A House that matters creates this naturally &mdash; the revenue is the evidence of impact, not the goal itself.
+            </div>
+        </div>
+
+        <div class="reveal" data-revenue>
+            <div class="revenue-bar">
+                <div class="revenue-year">Year 1</div>
+                <div class="revenue-track"><div class="revenue-fill" style="width:0.3%"></div></div>
+                <div class="revenue-amount">&euro;100&ndash;300K</div>
+            </div>
+            <div class="revenue-bar">
+                <div class="revenue-year">Year 3</div>
+                <div class="revenue-track"><div class="revenue-fill" style="width:3%"></div></div>
+                <div class="revenue-amount">&euro;1&ndash;3M</div>
+            </div>
+            <div class="revenue-bar">
+                <div class="revenue-year">Year 5</div>
+                <div class="revenue-track"><div class="revenue-fill" style="width:15%"></div></div>
+                <div class="revenue-amount">&euro;5&ndash;15M</div>
+            </div>
+            <div class="revenue-bar">
+                <div class="revenue-year">Year 10</div>
+                <div class="revenue-track"><div class="revenue-fill" style="width:100%"></div></div>
+                <div class="revenue-amount t-gold">&euro;100M+</div>
+            </div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="reveal">
+            <div class="t-body">
+                The Court is the seed. The membership compounds. The documentary creates cultural inevitability. The objects follow. The commissions follow. The perfume engine follows. The Sz&#369;r coats follow. AQUAMORA follows.
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="reveal">
+            <div class="t-body">
+                In 10 years, &ldquo;the M&#211;RA Court&rdquo; is a reference point in how culture talks about love &mdash; the way &ldquo;Vogue&rdquo; is a reference point in how culture talks about fashion.
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="room-divider"></div>
+
+
+<!-- ═══════════════════════════════════
+     ROOM 11: THE CLOSE
+     ═══════════════════════════════════ -->
+<section class="room room--centered" style="min-height:80vh">
+    <div class="room-inner">
+        <div class="reveal reveal-slow">
+            <div class="t-quote" style="max-width:480px;margin:0 auto">
+                The House was always here.<br>
+                The communists drove it underground.<br>
+                Three generations kept it alive in secret.<br><br>
+                <span class="t-gold">Now the Court reopens.</span>
+            </div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="reveal reveal-delay-3 reveal-slow">
+            <div class="divider divider--centered divider--wide"></div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="reveal reveal-delay-4 reveal-slow">
+            <div class="closing-motto">
+                &ldquo;Az Ur a Pokolban is az Ur&rdquo;
+            </div>
+            <div class="t-small" style="text-align:center;margin-top:0.8rem;opacity:0.3;font-style:italic">
+                The Lord is Lord, even in Hell.
+            </div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="reveal reveal-delay-5 reveal-slow">
+            <div class="t-court-label">The Court of</div>
+            <div class="t-brand" style="font-size:clamp(2.5rem,6vw,4.5rem);margin-top:0.3rem">M&#211;RA</div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer -->
+<div class="doc-footer">
+    <div class="doc-footer-text">M&#211;RA Budapest &middot; Vision Document &middot; February 2026</div>
 </div>
 
-<!-- ═══════════════════════════════════
-     EMBROIDERY ORNAMENT (inline SVG)
-     Hungarian Kalocsai-inspired
-     ═══════════════════════════════════ -->
-<svg width="0" height="0" style="position:absolute">
-<defs>
-<symbol id="ornament-embroidery" viewBox="0 0 320 55">
-    <!-- Central rose -->
-    <circle cx="160" cy="27" r="9" fill="#722F37" opacity="0.6"/>
-    <circle cx="160" cy="27" r="6.5" fill="#8B3A42" opacity="0.7"/>
-    <circle cx="160" cy="27" r="4" fill="#A04550" opacity="0.8"/>
-    <circle cx="160" cy="27" r="2" fill="#5A2028"/>
-    <!-- Petal accents around center -->
-    <ellipse cx="160" cy="17" rx="3.5" ry="5" fill="#722F37" opacity="0.4"/>
-    <ellipse cx="160" cy="37" rx="3.5" ry="5" fill="#722F37" opacity="0.4"/>
-    <ellipse cx="150" cy="27" rx="5" ry="3.5" fill="#722F37" opacity="0.35"/>
-    <ellipse cx="170" cy="27" rx="5" ry="3.5" fill="#722F37" opacity="0.35"/>
-
-    <!-- Left curving stem -->
-    <path d="M148,27 Q128,14 105,22 Q82,30 60,24" stroke="#2C5530" stroke-width="1.2" fill="none" opacity="0.55"/>
-    <!-- Right curving stem -->
-    <path d="M172,27 Q192,14 215,22 Q238,30 260,24" stroke="#2C5530" stroke-width="1.2" fill="none" opacity="0.55"/>
-
-    <!-- Left leaves -->
-    <ellipse cx="118" cy="17" rx="7" ry="3" fill="#2C5530" opacity="0.45" transform="rotate(-25 118 17)"/>
-    <ellipse cx="90" cy="28" rx="6" ry="2.5" fill="#3D7A4A" opacity="0.35" transform="rotate(18 90 28)"/>
-    <ellipse cx="105" cy="26" rx="5" ry="2.2" fill="#2C5530" opacity="0.3" transform="rotate(-40 105 26)"/>
-    <!-- Right leaves -->
-    <ellipse cx="202" cy="17" rx="7" ry="3" fill="#2C5530" opacity="0.45" transform="rotate(25 202 17)"/>
-    <ellipse cx="230" cy="28" rx="6" ry="2.5" fill="#3D7A4A" opacity="0.35" transform="rotate(-18 230 28)"/>
-    <ellipse cx="215" cy="26" rx="5" ry="2.2" fill="#2C5530" opacity="0.3" transform="rotate(40 215 26)"/>
-
-    <!-- Left bud -->
-    <ellipse cx="60" cy="24" rx="3.5" ry="5" fill="#722F37" opacity="0.4"/>
-    <ellipse cx="60" cy="22" rx="2.5" ry="4" fill="#8B3A42" opacity="0.45"/>
-    <!-- Right bud -->
-    <ellipse cx="260" cy="24" rx="3.5" ry="5" fill="#722F37" opacity="0.4"/>
-    <ellipse cx="260" cy="22" rx="2.5" ry="4" fill="#8B3A42" opacity="0.45"/>
-
-    <!-- Gold stamen dots -->
-    <circle cx="60" cy="20" r="1" fill="#C9A227" opacity="0.4"/>
-    <circle cx="260" cy="20" r="1" fill="#C9A227" opacity="0.4"/>
-    <circle cx="160" cy="27" r="1" fill="#C9A227" opacity="0.35"/>
-
-    <!-- Outer stem tips — fine tendrils -->
-    <path d="M60,24 Q45,20 35,25" stroke="#2C5530" stroke-width="0.6" fill="none" opacity="0.3"/>
-    <path d="M260,24 Q275,20 285,25" stroke="#2C5530" stroke-width="0.6" fill="none" opacity="0.3"/>
-</symbol>
-</defs>
-</svg>
-
-
-<!-- ═══════════════════════════════════
-     SCREEN: THE GATE
-     ═══════════════════════════════════ -->
-<section class="screen active" id="gate" aria-label="Entrance">
-    <div class="screen-content">
-        <div class="court-label">The Court of</div>
-        <div class="brand-name">M&#211;RA</div>
-        <svg class="embroidery-ornament" aria-hidden="true"><use href="#ornament-embroidery"/></svg>
-        <div class="tagline">Courtship for the Sincere</div>
-        <button class="btn" id="btn-enter">enter</button>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     SCREEN: DECLARATION OF INTENT
-     ═══════════════════════════════════ -->
-<section class="screen" id="declaration" aria-label="Declaration">
-    <div class="screen-content">
-        <div class="declaration-preface">Before you may enter, you must declare.</div>
-        <svg class="embroidery-ornament" aria-hidden="true"><use href="#ornament-embroidery"/></svg>
-        <div class="declaration-text">
-            I abandon the mechanics of dating.<br>
-            I believe love deserves craft,<br>
-            patience, and care.
-        </div>
-        <button class="btn btn-declare" id="btn-declare">I declare</button>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     SCREEN: Q1 — THE APPROACH
-     ═══════════════════════════════════ -->
-<section class="screen" id="q1" aria-label="The Approach">
-    <div class="screen-content">
-        <div class="scenario">
-            Someone you're drawn to tells you<br>
-            they need time before they can give you<br>
-            an answer about anything.
-        </div>
-        <svg class="embroidery-ornament" aria-hidden="true"><use href="#ornament-embroidery"/></svg>
-        <div class="answers">
-            <div class="answer" tabindex="0" role="button" data-question="1" data-value="patience">
-                I'd respect their pace. Some things can't be rushed.
-            </div>
-            <div class="answer" tabindex="0" role="button" data-question="1" data-value="understanding">
-                I'd give them space, but I'd want to understand why.
-            </div>
-            <div class="answer" tabindex="0" role="button" data-question="1" data-value="impatience" data-barred="true">
-                I'd need to know where I stand. Time is the one thing I can't get back.
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     SCREEN: Q2 — THE LETTER
-     ═══════════════════════════════════ -->
-<section class="screen" id="q2" aria-label="The Letter">
-    <div class="screen-content">
-        <div class="scenario">
-            Someone gives you a handwritten letter<br>
-            instead of a text message.
-        </div>
-        <svg class="embroidery-ornament" aria-hidden="true"><use href="#ornament-embroidery"/></svg>
-        <div class="answers">
-            <div class="answer" tabindex="0" role="button" data-question="2" data-value="moved">
-                I'd be moved. The effort says something words alone can't.
-            </div>
-            <div class="answer" tabindex="0" role="button" data-question="2" data-value="charmed">
-                I'd find it unusual but charming. It would depend on what they wrote.
-            </div>
-            <div class="answer" tabindex="0" role="button" data-question="2" data-value="cynical" data-barred="true">
-                I'd wonder what they were trying to prove.
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     SCREEN: Q3 — THE QUESTION
-     ═══════════════════════════════════ -->
-<section class="screen" id="q3" aria-label="The Question">
-    <div class="screen-content">
-        <div class="scenario">
-            Someone asks you:<br>
-            &ldquo;Why would you court someone<br>
-            when you could just date them?&rdquo;
-        </div>
-        <svg class="embroidery-ornament" aria-hidden="true"><use href="#ornament-embroidery"/></svg>
-        <div class="answers">
-            <div class="answer" tabindex="0" role="button" data-question="3" data-value="conducted">
-                Because love should be conducted, not consumed.
-            </div>
-            <div class="answer" tabindex="0" role="button" data-question="3" data-value="resist">
-                Because the best things in life resist convenience.
-            </div>
-            <div class="answer" tabindex="0" role="button" data-question="3" data-value="deliberate">
-                Because I want someone to know I chose them deliberately, not casually.
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     SCREEN: ACCEPTED
-     ═══════════════════════════════════ -->
-<section class="screen verdict-accepted" id="accepted" aria-label="Accepted">
-    <div class="screen-content">
-        <div class="verdict-text">The Court has received you.</div>
-        <svg class="embroidery-ornament" aria-hidden="true"><use href="#ornament-embroidery"/></svg>
-        <div class="tiers">
-            <div class="tier" tabindex="0" role="button" data-tier="ribbon">
-                <div class="tier-name">The Ribbon</div>
-                <div class="tier-price">&euro;50</div>
-                <div class="tier-signal">I'm curious</div>
-            </div>
-            <div class="tier" tabindex="0" role="button" data-tier="handkerchief">
-                <div class="tier-name">The Handkerchief</div>
-                <div class="tier-price">&euro;200</div>
-                <div class="tier-signal">I'm ready for love</div>
-            </div>
-            <div class="tier" tabindex="0" role="button" data-tier="lighter">
-                <div class="tier-name">The Lighter</div>
-                <div class="tier-price">&euro;1,000</div>
-                <div class="tier-signal">I'm serious</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     SCREEN: BARRED
-     ═══════════════════════════════════ -->
-<section class="screen verdict-barred" id="barred" aria-label="Barred">
-    <div class="screen-content">
-        <div class="verdict-text">The Court is not ready for you yet.</div>
-    </div>
-</section>
+</div><!-- /content -->
 
 
 <script>
 /* ═══════════════════════════════════
-   STATE
+   PARTICLES
    ═══════════════════════════════════ */
-
-const state = { current: 'gate', answers: [], barred: false, transitioning: false };
-const flow = { q1: 'q2', q2: 'q3', q3: 'accepted' };
-
-/* ═══════════════════════════════════
-   PARTICLES — pollen and light motes
-   ═══════════════════════════════════ */
-
 (function createParticles() {
     const container = document.getElementById('particles');
-    const count = window.innerWidth < 640 ? 12 : 22;
-
+    const count = window.innerWidth < 640 ? 10 : 18;
     for (let i = 0; i < count; i++) {
         const p = document.createElement('div');
         p.className = 'particle';
@@ -902,85 +1684,35 @@ const flow = { q1: 'q2', q2: 'q3', q3: 'accepted' };
         p.style.setProperty('--dx', ((Math.random() - 0.5) * 120) + 'px');
         p.style.setProperty('--dy', (-30 - Math.random() * 100) + 'px');
         p.style.setProperty('--size', (1.5 + Math.random() * 2.5) + 'px');
-        p.style.setProperty('--peak', (0.08 + Math.random() * 0.2).toFixed(2));
+        p.style.setProperty('--peak', (0.08 + Math.random() * 0.18).toFixed(2));
         container.appendChild(p);
     }
 })();
 
 /* ═══════════════════════════════════
-   TRANSITIONS
+   SCROLL REVEAL (Intersection Observer)
    ═══════════════════════════════════ */
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
 
-function transitionTo(id) {
-    if (state.transitioning) return;
-    state.transitioning = true;
-
-    const curr = document.getElementById(state.current);
-    const next = document.getElementById(id);
-    const hold = id === 'barred' ? 800 : 450;
-
-    curr.classList.remove('active');
-    curr.classList.add('exiting');
-
-    setTimeout(() => {
-        curr.classList.remove('exiting');
-
-        const answers = next.querySelector('.answers');
-        if (answers) answers.classList.add('answers-enter');
-
-        next.classList.add('active');
-        state.current = id;
-        state.transitioning = false;
-    }, 1100 + hold);
-}
-
-/* ═══════════════════════════════════
-   ANSWER LOGIC
-   ═══════════════════════════════════ */
-
-function selectAnswer(el) {
-    if (state.transitioning) return;
-    const container = el.closest('.answers');
-    if (container.querySelector('.selected')) return;
-
-    el.classList.add('selected');
-    container.querySelectorAll('.answer:not(.selected)').forEach(s => s.classList.add('dimmed'));
-
-    const isBarred = el.dataset.barred === 'true';
-    state.answers.push({ q: el.dataset.question, v: el.dataset.value, barred: isBarred });
-    if (isBarred) state.barred = true;
-
-    const currentQ = 'q' + el.dataset.question;
-    const next = state.barred ? 'barred' : (flow[currentQ] || 'accepted');
-
-    setTimeout(() => transitionTo(next), 950);
-}
-
-/* ═══════════════════════════════════
-   EVENT BINDING
-   ═══════════════════════════════════ */
-
-document.getElementById('btn-enter').addEventListener('click', () => transitionTo('declaration'));
-document.getElementById('btn-declare').addEventListener('click', () => transitionTo('q1'));
-
-document.querySelectorAll('.answer').forEach(el => {
-    el.addEventListener('click', () => selectAnswer(el));
-    el.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectAnswer(el); }
+            // Animate revenue bars
+            if (entry.target.hasAttribute('data-revenue')) {
+                setTimeout(() => {
+                    entry.target.querySelectorAll('.revenue-fill').forEach(bar => {
+                        bar.classList.add('animate');
+                    });
+                }, 400);
+            }
+        }
     });
+}, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
 });
 
-document.querySelectorAll('.tier').forEach(el => {
-    const handler = () => {
-        el.style.borderColor = 'rgba(201, 162, 39, 0.5)';
-        el.style.background = 'rgba(201, 162, 39, 0.05)';
-        console.log('Selected:', el.dataset.tier);
-    };
-    el.addEventListener('click', handler);
-    el.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handler(); }
-    });
-});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
